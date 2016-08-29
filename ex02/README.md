@@ -5,5 +5,7 @@
 2. Simulation cycle (...)
 3. Explicit delays (...)
 
-	library ieee ;
-	use ieee.std_logic_1164.all ;
+#### Task 2
+
+	library ieee;
+	use ieee.std_logic_1164.all;
