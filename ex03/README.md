@@ -4,4 +4,4 @@
 
 1. How many flip-flops are used in the design?
 
-..+ test
+..* test
