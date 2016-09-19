@@ -2,62 +2,14 @@
 
 The final report will be evaluated according to these criteria, and weights:
 
-+-----------------------------+----------+
 |Criterion                    |Max Points|
-+=============================+==========+
+|-----------------------------|----------|
 |Readability, Structure, Order|10        |
-+-----------------------------+----------+
-
-|Problem Description and Analysis.
-
-- Describe the problem you are trying to solve?
-- What are the main requirements?
-- What do you need to investigate further before proposing a solution?
-- Discuss/Analyze/Conclude
-</span>
-
-15
-
-Design exploration and presentation of solution.
-
-- Evaluate a couple of different alternatives
-- Present the architecture of the proposed solution/design.
-- Analyze/Estimate performance and area
-
-- Discuss/Analyze/Conclude
-
-
-20
-
-Verification plan (and verification done)
-
-- Write a verification plan.
-- What metrics will you use to decide when you are done verifying?
-(pass rate, code coverage, functional coverage).
-- Demonstrate the use of assertions
-- What bring up test strategy have you planned?
-- Discuss/Analyze/Conclude
-
-
-
-20
-
-Synthesis and test on FPGA
-
-- Measure area and performance
-
-- Prove that the design actually works on FPGA
-
-- Discuss/Analyze/Conclude
-
-
-20
-
-Discussion
-
-- Analysis and discussion of problems, solutions and measured results is necessary in order to make the right decisions. Discussion should therefore be integrated into all parts of the report.
-
-- What is done, what can be improved (future work).
+|Problem Description and Analysis.<br>- Describe the problem you are trying to solve?<br>- What are the main requirements?<br>- What do you need to investigate further before proposing a solution?<br>- Discuss/Analyze/Conclude|15|
+|Design exploration and presentation of solution.<br>- Evaluate a couple of different alternatives<br>- Present the architecture of the proposed solution/design.<br>- Analyze/Estimate performance and area<br>- Discuss/Analyze/Conclude|20|
+|Verification plan (and verification done)<br>- Write a verification plan.<br>- What metrics will you use to decide when you are done verifying?<br>(pass rate, code coverage, functional coverage).<br>- Demonstrate the use of assertions<br>- What bring up test strategy have you planned?<br>- Discuss/Analyze/Conclude|20|
+|Synthesis and test on FPGA<br>- Measure area and performance<br>- Prove that the design actually works on FPGA<br>- Discuss/Analyze/Conclude|20|
+|Discussion<br>- Analysis and discussion of problems, solutions and measured results is necessary in order to make the right decisions. Discussion should therefore be integrated into all parts of the report.<br>- What is done, what can be improved (future work).|15|
 
 ## Schedule
 
