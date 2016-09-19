@@ -1,4 +1,6 @@
-## Criteria
+## Evaluation
+
+### Criteria
 
 The final report will be evaluated according to these criteria, and weights:
 
@@ -11,7 +13,7 @@ The final report will be evaluated according to these criteria, and weights:
 |Synthesis and test on FPGA<br>- Measure area and performance<br>- Prove that the design actually works on FPGA<br>- Discuss/Analyze/Conclude|20|
 |Discussion<br>- Analysis and discussion of problems, solutions and measured results is necessary in order to make the right decisions. Discussion should therefore be integrated into all parts of the report.<br>- What is done, what can be improved (future work).|15|
 
-## Schedule
+### Schedule
 
 |Date           |Milestone                |
 |---------------|-------------------------|
