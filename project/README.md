@@ -1,3 +1,15 @@
+## RSA Key Generation[1]
+
+1. Choose two large primes p and q
+2. Compute n = p*q
+3. Calculate Φ(n) = (p-1)(q-1)
+4. Select the public exponent e ∈ {1, 2, ..., Φ(n)-1}, Such that GCD(e, Φ(n) = 1)
+5. Compute the private key d such that d*e ≡ mod Φ(n), Output: public key: k<sub>pub</sub> = (n, e) and private key: k<sub>pr</sub> = (d)
+
+## Research litterature
+
+1. [FPGA Implementation of RSA Encryption System](http://www.ijcaonline.org/volume19/number9/pxc3873173.pdf)
+
 ## Evaluation
 
 ### Criteria
@@ -21,3 +33,9 @@ The final report will be evaluated according to these criteria, and weights:
 |Monday 03. Oct |Microarchitecture review day. Whiteboard presentations for all groups. Each group prepare 2-3 powerpoint slides that describe the microarchitecture of their design. Each group will present for two one other groups as well as one representative from the staff (Jonas, Øystein or Didrik)|
 |Monday 21. Nov |Each group presents their solution. Focus on presenting the architecture, performance and area.|
 |Friday 25. Nov |Hand in the term project report|
+
+### Acronyms
+
+|Acronym|Description            |
+|-------|-----------------------|
+|GCD    |Greatest common divisor|
