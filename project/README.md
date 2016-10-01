@@ -1,3 +1,8 @@
+### Papers
+- [RSA Hardware Implementation, C.K. Koc](https://koclab.cs.ucsb.edu/docs/koc/r02.pdf)
+- [A Faster Hardware Implementation of RSA
+Algorithm, Ajay C Shantilal](http://cs.ucsb.edu/~koc/cren/project/pp/ajay.pdf)
+
 ## Concepts
 ### Modular exponentiation
 Calculate the remainder when an integer *b* (base) raised to the *e*th power (exponent), b<sup>e</sup>, is divided by a positiv integer *m* (modulus).
