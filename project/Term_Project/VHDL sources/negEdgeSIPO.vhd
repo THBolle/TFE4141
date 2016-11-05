@@ -42,30 +42,26 @@ end negEdgeSIPO;
 
 architecture Behavioral of negEdgeSIPO is
     
-       
+       signal nextParOutput : STD_LOGIC_VECTOR (127 downto 0);
 
 begin
 
-    process(CLK,Resetn, Enable) 
+
+    -- use internal signal and clock condition to generate register 
+    process(CLK,Resetn, Enable)             
+        begin
     
-         
-         variable nextParOutput: STD_LOGIC_VECTOR ( 127 downto 0 );
-         
-         
-    begin
-    
-        if ( Resetn = '0') then
-            nextParOutput ( 127 downto 0 ) := std_logic_vector(to_unsigned(0,128));
-            ParallelOut (127 downto 0) <= nextParOutput(127 downto 0); 
+            if ( Resetn = '0') then
+                nextParOutput ( 127 downto 0 ) <= std_logic_vector(to_unsigned(0,128));
  
-        elsif ( CLK'EVENT AND CLK ='0' AND Enable = '1' ) then
-            nextParOutput(127 downto 32)    := nextParOutput(95 downto 0);
-            nextParOutput(31 downto 0 )     := DataIn(31 downto 0);
-            
-            ParallelOut(127 downto 0 ) <= nextParOutput ( 127 downto 0 );
-            
-        end if;
+            elsif ( falling_edge(CLK) AND Enable = '1' ) then
+                    nextParOutput(127 downto 32)    <= nextParOutput(95 downto 0);
+                    nextParOutput(31 downto 0 )     <= DataIn(31 downto 0);
+            end if;
     
-    end process;
+        end process;
+        
+        -- set output with combinatorial logic to avoid extra registers:
+        ParallelOut(127 downto 0) <= nextParOutput(127 downto 0 );
 
 end Behavioral;

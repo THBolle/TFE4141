@@ -52,3 +52,15 @@ run 1 us
 relaunch_sim
 run 1 us
 run 10 us
+synth_design -rtl -name rtl_1
+refresh_design
+refresh_design
+refresh_design
+refresh_design
+refresh_design
+refresh_design
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+refresh_design
+relaunch_sim
+run 10 us
