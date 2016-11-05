@@ -162,3 +162,22 @@ selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sourc
 selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, inputRegister - Behavioral (inputRegister.vhd)]", 2, false, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click
 selectCodeEditor("inputRegister.vhd", 435, 392); // bH:N (JPanel:JComponent, cv:JFrame)
 selectCodeEditor("inputRegister.vhd", 336, 642); // bH:N (JPanel:JComponent, cv:JFrame)
+// Elapsed time: 71 seconds
+selectCodeEditor("inputRegister.vhd", 417, 487); // bH:N (JPanel:JComponent, cv:JFrame)
+// Elapsed time: 67 seconds
+selectCodeEditor("inputRegister.vhd", 57, 569); // bH:N (JPanel:JComponent, cv:JFrame)
+// Elapsed time: 48 seconds
+selectCodeEditor("inputRegister.vhd", 127, 584); // bH:N (JPanel:JComponent, cv:JFrame)
+selectCodeEditor("inputRegister.vhd", 127, 584, false, false, false, false, true); // bH:N (JPanel:JComponent, cv:JFrame) - Double Click
+typeControlKey((HResource) null, "inputRegister.vhd", 'c'); // bH:N (JPanel:JComponent, cv:JFrame)
+selectCodeEditor("inputRegister.vhd", 28, 588); // bH:N (JPanel:JComponent, cv:JFrame)
+typeControlKey((HResource) null, "inputRegister.vhd", 'v'); // bH:N (JPanel:JComponent, cv:JFrame)
+// HMemoryUtils.trashcanNow. Engine heap size: 525 MB. GUI used memory: 47 MB. Current time: 11/5/16 1:46:33 PM CET
+// Elapsed time: 2023 seconds
+selectCodeEditor("inputRegister.vhd", 251, 588); // bH:N (JPanel:JComponent, cv:JFrame)
+// [GUI Memory]: 86 MB (+164kb) [01:00:14]
+// HMemoryUtils.trashcanNow. Engine heap size: 525 MB. GUI used memory: 39 MB. Current time: 11/5/16 2:16:33 PM CET
+// Elapsed time: 1215 seconds
+selectCodeEditor("inputRegister.vhd", 411, 684); // bH:N (JPanel:JComponent, cv:JFrame)
+// Elapsed time: 1132 seconds
+selectCodeEditor("inputRegister.vhd", 381, 410); // bH:N (JPanel:JComponent, cv:JFrame)
