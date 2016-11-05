@@ -43,7 +43,7 @@ end inputRegister;
 
 architecture Behavioral of inputRegister is
 begin
-   DataPath: process (
+  -- DataPath: process (
     
     
 
