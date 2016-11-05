@@ -59,8 +59,8 @@ begin
             ParallelOut (127 downto 0) <= nextParOutput(127 downto 0); 
  
         elsif ( CLK'EVENT AND CLK ='0' AND Enable = '1' ) then
-            nextParOutput(127 downto 16)    := nextParOutput(95 downto 0);
-            nextParOutput(15 downto 0 )     := DataIn;
+            nextParOutput(127 downto 32)    := nextParOutput(95 downto 0);
+            nextParOutput(31 downto 0 )     := DataIn(31 downto 0);
             
             ParallelOut(127 downto 0 ) <= nextParOutput ( 127 downto 0 );
             

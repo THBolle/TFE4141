@@ -18,3 +18,37 @@ update_compile_order -fileset sources_1
 close [ open {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/negEdgeSIPO.vhd} w ]
 add_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/negEdgeSIPO.vhd}}
 update_compile_order -fileset sources_1
+close [ open C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/negEdgeSipo_tb.vhd w ]
+add_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/negEdgeSipo_tb.vhd
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source negEdgeSipo_tb.tcl
+run 5 ms
+relaunch_sim
+run 5 ms
+relaunch_sim
+run 5 ms
+run 1 ms
+run 1 us
+run 1 us
+relaunch_sim
+run 1 us
+run 10 us
