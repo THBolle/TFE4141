@@ -64,3 +64,4 @@ update_compile_order -fileset sources_1
 refresh_design
 relaunch_sim
 run 10 us
+remove_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/inputRegister.vhd}}
