@@ -79,3 +79,11 @@ set_property top TopLevelStateMachine [get_filesets sim_1]
 set_property top_lib xil_defaultlib [get_filesets sim_1]
 launch_simulation
 source TopLevelStateMachine.tcl
+set_property top TopLevelStateMachine_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+launch_simulation
+source TopLevelStateMachine_tb.tcl
+run 10 us
+run all
+run 10 us
+relaunch_sim

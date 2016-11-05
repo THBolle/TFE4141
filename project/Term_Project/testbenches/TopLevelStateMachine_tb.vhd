@@ -105,7 +105,10 @@ clk_process : process begin
      end process;
      
 stim_process : process begin
-        wait
+        wait for 100ns;
+        Resetn <= '1';
+        wait for 100ns;
+        initRsa <= '1';
         
         end process;
 
