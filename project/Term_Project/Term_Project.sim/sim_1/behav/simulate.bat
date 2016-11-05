@@ -1,6 +1,6 @@
 @echo off
 set xv_path=C:\\Xilinx\\Vivado\\2016.2\\bin
-call %xv_path%/xsim negEdgeSipo_tb_behav -key {Behavioral:sim_1:Functional:negEdgeSipo_tb} -tclbatch negEdgeSipo_tb.tcl -log simulate.log
+call %xv_path%/xsim TopLevelStateMachine_behav -key {Behavioral:sim_1:Functional:TopLevelStateMachine} -tclbatch TopLevelStateMachine.tcl -log simulate.log
 if "%errorlevel%"=="0" goto SUCCESS
 if "%errorlevel%"=="1" goto END
 :END

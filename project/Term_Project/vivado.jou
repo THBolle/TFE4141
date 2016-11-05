@@ -65,3 +65,17 @@ refresh_design
 relaunch_sim
 run 10 us
 remove_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/inputRegister.vhd}}
+close [ open {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/TopLevelStateMachine.vhd} w ]
+add_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/TopLevelStateMachine.vhd}}
+update_compile_order -fileset sources_1
+close [ open C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/TopLevelStateMachine_tb.vhd w ]
+add_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/TopLevelStateMachine_tb.vhd
+update_compile_order -fileset sources_1
+close_sim
+launch_simulation
+source negEdgeSipo_tb.tcl
+run 10 us
+set_property top TopLevelStateMachine [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+launch_simulation
+source TopLevelStateMachine.tcl
