@@ -42,8 +42,9 @@ entity inputRegister is
 end inputRegister;
 
 architecture Behavioral of inputRegister is
-
 begin
-
+   DataPath: process (
+    
+    
 
 end Behavioral;

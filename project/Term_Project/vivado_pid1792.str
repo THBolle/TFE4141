@@ -181,3 +181,12 @@ selectCodeEditor("inputRegister.vhd", 251, 588); // bH:N (JPanel:JComponent, cv:
 selectCodeEditor("inputRegister.vhd", 411, 684); // bH:N (JPanel:JComponent, cv:JFrame)
 // Elapsed time: 1132 seconds
 selectCodeEditor("inputRegister.vhd", 381, 410); // bH:N (JPanel:JComponent, cv:JFrame)
+// Elapsed time: 59 seconds
+selectCodeEditor("inputRegister.vhd", 448, 496); // bH:N (JPanel:JComponent, cv:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
