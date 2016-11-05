@@ -15,3 +15,6 @@ update_compile_order -fileset sources_1
 close [ open {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/inputRegister.vhd} w ]
 add_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/inputRegister.vhd}}
 update_compile_order -fileset sources_1
+close [ open {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/negEdgeSIPO.vhd} w ]
+add_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/negEdgeSIPO.vhd}}
+update_compile_order -fileset sources_1
