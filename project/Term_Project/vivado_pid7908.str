@@ -688,3 +688,71 @@ selectButton(PAResourceCommand.PACommandNames_SIMULATION_LIVE_RUN, "simulation_l
 // TclEventType: SIMULATION_UPDATE_OBJECT_TREE
 // TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
 // Tcl Message: run 400 ns 
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// HMemoryUtils.trashcanNow. Engine heap size: 567 MB. GUI used memory: 64 MB. Current time: 11/6/16 8:47:20 PM CET
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// Elapsed time: 96 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis, Open Elaborated Design]", 14, true); // x:Y (w:G, cv:JFrame) - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_RTL_DESIGN
+// G:be (cv:JFrame): Elaborate Design: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, G:be)
+// bL:g (cv:JFrame):  Open Elaborated Design : addNotify
+dismissDialog("Elaborate Design"); // G:be (cv:JFrame)
+// TclEventType: ELABORATE_START
+// Tcl Message: synth_design -rtl -name rtl_1 
+// Tcl Message: Command: synth_design -rtl -name rtl_1 Starting synth_design Using part: xc7z020clg484-1 Top: RSACORE_tb 
+// HMemoryUtils.trashcanNow. Engine heap size: 609 MB. GUI used memory: 47 MB. Current time: 11/6/16 8:47:40 PM CET
+// [Engine Memory]: 610 MB (+15473kb) [00:05:25]
+// TclEventType: ELABORATE_FINISH
+// [Engine Memory]: 726 MB (+90337kb) [00:05:30]
+// TclEventType: FLOORPLAN_MODIFY
+// TclEventType: DESIGN_NEW
+// HMemoryUtils.trashcanNow. Engine heap size: 865 MB. GUI used memory: 46 MB. Current time: 11/6/16 8:47:50 PM CET
+// [Engine Memory]: 865 MB (+107600kb) [00:05:34]
+// [Engine Memory]: 918 MB (+9916kb) [00:05:35]
+// Xgd.load filename: C:/Xilinx/Vivado/2016.2/data/parts/xilinx/zynq/devint/zynq/xc7z020/xc7z020.xgd; ZipEntry: xc7z020_detail.xgd elapsed time: 1s
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// RouteApi::loadEngineXgd elapsed time: 1.4s
+// [Engine Memory]: 970 MB (+6745kb) [00:05:38]
+// TclEventType: DESIGN_NEW
+// Schematic: addNotify
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: Starting RTL Elaboration : Time (s): cpu = 00:01:51 ; elapsed = 00:05:30 . Memory (MB): peak = 858.629 ; gain = 651.289 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: INFO: [Synth 8-256] done synthesizing module 'RSACore' (4#1) [C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/new/RSACore.vhd:47] 
+// Tcl Message: INFO: [Synth 8-256] done synthesizing module 'RSACORE_tb' (5#1) [C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACORE_tb.vhd:38] 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: Finished RTL Elaboration : Time (s): cpu = 00:01:51 ; elapsed = 00:05:31 . Memory (MB): peak = 894.973 ; gain = 687.633 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message:  Report Check Netlist:  +------+------------------+-------+---------+-------+------------------+ |      |Item              |Errors |Warnings |Status |Description       | +------+------------------+-------+---------+-------+------------------+ |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets | +------+------------------+-------+---------+-------+------------------+ --------------------------------------------------------------------------------- 
+// Tcl Message: Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:52 ; elapsed = 00:05:31 . Memory (MB): peak = 894.973 ; gain = 687.633 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: INFO: [Device 21-403] Loading part xc7z020clg484-1 INFO: [Project 1-570] Preparing netlist for logic optimization 
+// Tcl Message:  Processing XDC Constraints Initializing timing engine Completed Processing XDC Constraints  
+// Tcl Message: INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s). INFO: [Project 1-111] Unisim Transformation Summary: No Unisim elements were transformed.  
+// TclEventType: CURR_DESIGN_SET
+// Tcl Message: RTL Elaboration Complete:  : Time (s): cpu = 00:02:07 ; elapsed = 00:05:44 . Memory (MB): peak = 1211.301 ; gain = 1003.961 
+// Tcl Message: 19 Infos, 40 Warnings, 0 Critical Warnings and 0 Errors encountered. synth_design completed successfully 
+// 'dG' command handler elapsed time: 20 seconds
+// Elapsed time: 19 seconds
+dismissDialog("Open Elaborated Design"); // bL:g (cv:JFrame)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis, Elaborated Design, Schematic]", 18, false); // x:Y (w:G, cv:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SCHEMATIC
+// Schematic: addNotify
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis, Elaborated Design, Report DRC]", 16, false); // x:Y (w:G, cv:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_DRC
+// i:x (cv:JFrame): Report DRC: addNotify
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a:JButton (JPanel:JComponent, i:x)
+dismissDialog("Report DRC"); // i:x (cv:JFrame)
+// [GUI Memory]: 100 MB (+2529kb) [00:05:56]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis, Elaborated Design, Report Methodology]", 15, false); // x:Y (w:G, cv:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_METHODOLOGY
+// a:x (cv:JFrame): Report Methodology: addNotify
+// [GUI Memory]: 107 MB (+2048kb) [00:05:57]
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a:JButton (JPanel:JComponent, a:x)
+dismissDialog("Report Methodology"); // a:x (cv:JFrame)
+// [GUI Memory]: 113 MB (+1199kb) [00:07:30]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,009 MB. GUI used memory: 73 MB. Current time: 11/6/16 8:50:01 PM CET
+// Elapsed time: 1309 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "negEdgeSIPO.vhd", 2); // TdiGroup:JideTabbedPane (CodeEditorDocumentPane:DocumentPane, cv:JFrame)
+// [GUI Memory]: 119 MB (+225kb) [00:32:18]

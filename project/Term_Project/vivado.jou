@@ -23,3 +23,4 @@ run 400 ns
 restart
 run 400 ns
 run 400 ns
+synth_design -rtl -name rtl_1
