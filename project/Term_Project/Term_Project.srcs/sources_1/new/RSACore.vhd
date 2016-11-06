@@ -31,6 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+
 entity RSACore is
     Port ( Clk : in STD_LOGIC;
            Resetn : in STD_LOGIC;
@@ -41,9 +42,71 @@ entity RSACore is
            CoreFinished : out STD_LOGIC);
 end RSACore;
 
+
+
 architecture Behavioral of RSACore is
+
+    COMPONENT TopLevelStateMachine  Port ( 
+                                            InitRsa : in STD_LOGIC;
+                                            StartRsa : in STD_LOGIC;
+                                            Clk : in STD_LOGIC;
+                                            ClkCounterIn : in STD_LOGIC_VECTOR ( 3 downto 0);
+                                            Resetn : in STD_LOGIC;
+                                            ExpDone: in STD_LOGIC;
+                                            dataShiftedOut : in STD_LOGIC;
+           
+                                            DataReceived : out STD_LOGIC;
+                                            EnableDataReg : out STD_LOGIC;
+                                            EnableCtrlReg : out STD_LOGIC;
+                                            CoreFinishedn : out STD_LOGIC;
+                                            ClkCounterReset : out STD_LOGIC
+                                          );
+    end COMPONENT;
+    
+    
+    COMPONENT negEdgeSipo Port (    DataIn : in STD_LOGIC_VECTOR (31 downto 0);
+                                        CLK : in STD_LOGIC;
+                                        Enable : in STD_LOGIC;
+                                        Resetn : in STD_LOGIC;
+                                        ParallelOut : out STD_LOGIC_VECTOR (127 downto 0)
+                                    );
+        end COMPONENT;
+
+
+    signal DataRegisterContent  : STD_LOGIC_VECTOR(127 downto 0 );
+    signal CTRLRegisterContent  : STD_LOGIC_VECTOR(127 downto 0 ); 
+    signal EnableDataReg        : STD_LOGIC;
+    signal EnableCTRLReg        : STD_LOGIC;
+    signal ClkCounterIn         : STD_LOGIC_VECTOR(3 downto 0);
+    signal ExpDone              : STD_LOGIC := '0';
+    signal dataShiftedOut       : STD_LOGIC := '0';
 
 begin
 
-
+    FSM: TopLevelStateMachine PORT MAP (        InitRsa => InitRsa, 
+                                                StartRsa => StartRsa, 
+                                                Clk => Clk,
+                                                ClkCounterIn => ClkCounterIn,
+                                                Resetn => Resetn,
+                                                CoreFinishedn => CoreFinished,
+                                                ExpDone => ExpDone,
+                                                dataShiftedOut => dataShiftedOut,
+                                                
+                                                EnableDataReg => EnableDataReg,
+                                                EnableCTRLReg => EnableCtrlReg
+                                                
+                                        );
+    DataRegister: negEdgeSipo PORT MAP (    DataIn => DataIn,
+                                            CLK => Clk,
+                                            Enable => enableDataReg,
+                                            Resetn => Resetn,
+                                            ParallelOut => DataRegisterContent
+                                        );
+                                        
+     CTRLRegister:negEdgeSipo PORT MAP (    DataIn => DataIn,
+                                            CLK => Clk,
+                                            Enable => enableCTRLReg,
+                                            Resetn => Resetn,
+                                            ParallelOut => CTRLRegisterContent
+                                       );
 end Behavioral;

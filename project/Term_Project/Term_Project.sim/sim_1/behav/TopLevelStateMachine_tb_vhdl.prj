@@ -1,6 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  "../../../VHDL sources/TopLevelStateMachine.vhd"
-vhdl xil_defaultlib  "../../../testbenches/TopLevelStateMachine_tb.vhd"
-
-# Do not sort compile order
-nosort

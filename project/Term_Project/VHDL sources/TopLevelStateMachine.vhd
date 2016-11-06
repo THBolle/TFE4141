@@ -43,7 +43,6 @@ entity TopLevelStateMachine is
            dataShiftedOut : in STD_LOGIC;
            
            DataReceived : out STD_LOGIC;
-           DestRegister : out STD_LOGIC;
            EnableDataReg : out STD_LOGIC;
            EnableCtrlReg : out STD_LOGIC;
            CoreFinishedn : out STD_LOGIC;
@@ -107,8 +106,7 @@ begin
     DataReceived <= '1' when  ( State = PROCESSING) OR (State = DONE) 
                else '0';  
    
-    DestRegister <= '1' when ( State = IDLE AND StartRsa = '1') OR ( State = RECEIVING_DATA)
-                else '0';
+
     
     EnableDataReg <= '1' when ( State = IDLE AND StartRsa = '1' ) OR ( State = RECEIVING_DATA)
                 else '0';

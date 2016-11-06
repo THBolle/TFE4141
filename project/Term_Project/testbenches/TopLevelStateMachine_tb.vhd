@@ -49,7 +49,6 @@ architecture Behavioral of TopLevelStateMachine_tb is
                                             dataShiftedOut : in STD_LOGIC;
            
                                             DataReceived : out STD_LOGIC;
-                                            DestRegister : out STD_LOGIC;
                                             EnableDataReg : out STD_LOGIC;
                                             EnableCtrlReg : out STD_LOGIC;
                                             CoreFinishedn : out STD_LOGIC;
@@ -72,7 +71,6 @@ architecture Behavioral of TopLevelStateMachine_tb is
     
     -- output signals
     signal DataReceived     : STD_LOGIC;
-    signal DestRegister     : STD_LOGIC;
     signal EnableDataReg    : STD_LOGIC;
     signal EnableCtrlReg    : STD_LOGIC;
     signal CoreFinishedn    : STD_LOGIC;
@@ -88,8 +86,7 @@ begin
                                         Resetn=>Resetn,                 
                                         ExpDone => ExpDone,             
                                         dataShiftedOut=> dataShiftedOut,     
-                                        DataReceived=> DataReceived,    
-                                        DestRegister=> DestRegister,    
+                                        DataReceived=> DataReceived,  
                                         EnableDataReg=>EnableDataReg ,  
                                         EnableCtrlReg=>EnableCtrlReg ,  
                                         CoreFinishedn=>CoreFinishedn,   
