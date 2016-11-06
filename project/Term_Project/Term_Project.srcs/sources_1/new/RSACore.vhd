@@ -59,7 +59,7 @@ architecture Behavioral of RSACore is
                                             EnableDataReg : out STD_LOGIC;
                                             EnableCtrlReg : out STD_LOGIC;
                                             CoreFinishedn : out STD_LOGIC;
-                                            ClkCounterReset : out STD_LOGIC
+                                            CounterEnable : out STD_LOGIC
                                           );
     end COMPONENT;
     

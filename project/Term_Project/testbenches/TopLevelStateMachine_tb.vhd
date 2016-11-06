@@ -52,7 +52,7 @@ architecture Behavioral of TopLevelStateMachine_tb is
                                             EnableDataReg : out STD_LOGIC;
                                             EnableCtrlReg : out STD_LOGIC;
                                             CoreFinishedn : out STD_LOGIC;
-                                            ClkCounterReset : out STD_LOGIC
+                                            CounterEnable : out STD_LOGIC
                                           );
     end COMPONENT;
 
@@ -74,7 +74,7 @@ architecture Behavioral of TopLevelStateMachine_tb is
     signal EnableDataReg    : STD_LOGIC;
     signal EnableCtrlReg    : STD_LOGIC;
     signal CoreFinishedn    : STD_LOGIC;
-    signal ClkCounterReset  : STD_LOGIC;
+    signal CounterEnable    : STD_LOGIC;
     
     
 
@@ -90,7 +90,7 @@ begin
                                         EnableDataReg=>EnableDataReg ,  
                                         EnableCtrlReg=>EnableCtrlReg ,  
                                         CoreFinishedn=>CoreFinishedn,   
-                                        ClkCounterReset=>ClkCounterReset
+                                        CounterEnable=>CounterEnable
                            );
 
 

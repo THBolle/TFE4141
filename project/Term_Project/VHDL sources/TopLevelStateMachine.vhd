@@ -46,7 +46,7 @@ entity TopLevelStateMachine is
            EnableDataReg : out STD_LOGIC;
            EnableCtrlReg : out STD_LOGIC;
            CoreFinishedn : out STD_LOGIC;
-           ClkCounterReset : out STD_LOGIC);
+           CounterEnable : out STD_LOGIC);
 end TopLevelStateMachine;
 
 
@@ -117,7 +117,7 @@ begin
     CoreFinishedn <= '1' when ( State = IDLE OR State = DONE )
                 else '0';
                 
-    ClkCounterReset <= '1' when ( State = IDLE AND (InitRsa = '1' OR StartRsa = '1'))
+    CounterEnable <= '1' when ( State = RECEIVING_DATA OR State = RECEIVING_INIT )
                 else '0';
     
     
