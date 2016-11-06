@@ -31,9 +31,9 @@ set rt::rc [catch {
     set rt::useElabCache false
     if {$rt::useElabCache == false} {
       rt::read_vhdl -lib xil_defaultlib {
-      {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/TopLevelStateMachine.vhd}
       {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/negEdgeSIPO.vhd}
       {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/NegEdgeCounter.vhd}
+      {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/TopLevelStateMachine.vhd}
       C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/new/RSACore.vhd
       C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACORE_tb.vhd
     }
