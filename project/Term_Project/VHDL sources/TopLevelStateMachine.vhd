@@ -102,4 +102,25 @@ begin
                               
         end if;
     end process;
+    
+    -- Output logic
+    DataReceived <= '1' when  ( State = PROCESSING) OR (State = DONE) 
+               else '0';  
+   
+    DestRegister <= '1' when ( State = IDLE AND StartRsa = '1') OR ( State = RECEIVING_DATA)
+                else '0';
+    
+    EnableDataReg <= '1' when ( State = IDLE AND StartRsa = '1' ) OR ( State = RECEIVING_DATA)
+                else '0';
+                
+    EnableCtrlReg <= '1' when ( State = IDLE AND InitRsa = '1' ) OR ( State = RECEIVING_INIT)
+                else '0';
+    
+    CoreFinishedn <= '1' when ( State = IDLE OR State = DONE )
+                else '0';
+                
+    ClkCounterReset <= '1' when ( State = IDLE AND (InitRsa = '1' OR StartRsa = '1'))
+                else '0';
+    
+    
 end Behavioral;

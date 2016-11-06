@@ -105,10 +105,31 @@ clk_process : process begin
      end process;
      
 stim_process : process begin
-        wait for 100ns;
+        wait for 10ns;
         Resetn <= '1';
-        wait for 100ns;
+        wait for 20ns;
         initRsa <= '1';
+        wait for 20ns;
+        initRsa <= '0';
+        wait for 160ns;
+        ClkCounterIn <= x"8";
+        wait for 200ns;
+        ClkCounterIn <= x"0";
+        wait for 20ns;
+        StartRsa <= '1';
+        wait for 20ns;
+        StartRsa <= '0';
+        wait for 80ns;
+        ClkCounterIn <= x"8";
+        
+        wait for 200 ns;
+        ExpDone <= '1';
+        
+        wait for 200ns;
+        dataShiftedOut <= '1';
+        
+        
+        wait;
         
         end process;
 
