@@ -114,7 +114,7 @@ begin
     EnableCtrlReg <= '1' when ( State = IDLE AND InitRsa = '1' ) OR ( State = RECEIVING_INIT)
                 else '0';
     
-    CoreFinishedn <= '1' when ( State = IDLE OR State = DONE )
+    CoreFinishedn <= '1' when ( State = IDLE OR State = DONE OR InitRsa = '1' OR StartRsa = '1')
                 else '0';
                 
     CounterEnable <= '1' when ( State = RECEIVING_DATA OR State = RECEIVING_INIT )

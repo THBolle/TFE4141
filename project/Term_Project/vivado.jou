@@ -2,10 +2,10 @@
 # Vivado v2016.2 (64-bit)
 # SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
 # IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
-# Start of session at: Sun Nov 06 19:40:56 2016
-# Process ID: 2036
+# Start of session at: Sun Nov 06 20:42:10 2016
+# Process ID: 7908
 # Current directory: C:/Kristian/GitHub/TFE4141/project/Term_Project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent4032 C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7444 C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr
 # Log file: C:/Kristian/GitHub/TFE4141/project/Term_Project/vivado.log
 # Journal file: C:/Kristian/GitHub/TFE4141/project/Term_Project\vivado.jou
 #-----------------------------------------------------------
@@ -13,20 +13,13 @@ start_gui
 open_project C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.xpr
 update_compile_order -fileset sources_1
 launch_simulation
-source TopLevelStateMachine_tb.tcl
-close [ open {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/NegEdgeCounter.vhd} w ]
-add_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/NegEdgeCounter.vhd}}
-update_compile_order -fileset sources_1
-close [ open C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/NegEdgeCounter_tb.vhd w ]
-add_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/NegEdgeCounter_tb.vhd
-update_compile_order -fileset sources_1
-set_property top NegEdgeCounter [current_fileset]
-update_compile_order -fileset sources_1
-set_property top NegEdgeCounter_tb [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
 launch_simulation
+reset_simulation -simset sim_1 -mode behavioral
 launch_simulation
-source NegEdgeCounter_tb.tcl
-close_sim
-launch_simulation
-source NegEdgeCounter_tb.tcl
+source RSACORE_tb.tcl
+restart
+run 400 ns
+run 400 ns
+restart
+run 400 ns
+run 400 ns

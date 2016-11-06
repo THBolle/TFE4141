@@ -69,7 +69,8 @@ begin
                             Resetn => Resetn,
                             InitRsa => InitRsa,
                             StartRsa => StartRsa,
-                            DataIn => DataIn
+                            DataIn => DataIn,
+                            CoreFinished => CoreFinished
                             );
                             
     
@@ -82,7 +83,7 @@ begin
     
     
     stim_process : process begin
-            wait for 10 ns;
+            wait for 2*clk_period;
             Resetn <= '1';
             
             wait for 100ns;
@@ -90,7 +91,12 @@ begin
             
             DataIn <= x"A5A5A5A5";
             InitRsa <= '1';
-            
+            wait for clk_period;
+            InitRsa <= '0';
+            wait for 9*clk_period;
+            StartRsa <= '1';
+            wait for clk_period;
+            StartRsa <= '0';
             wait for 100ns;
              wait;
             end process;

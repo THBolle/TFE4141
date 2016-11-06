@@ -70,7 +70,13 @@ architecture Behavioral of RSACore is
                                         Resetn : in STD_LOGIC;
                                         ParallelOut : out STD_LOGIC_VECTOR (127 downto 0)
                                     );
-        end COMPONENT;
+     end COMPONENT;
+        
+     COMPONENT NegEdgeCounter Port (    Enable : in STD_LOGIC;
+                                        Clk : in STD_LOGIC;
+                                        Resetn : in STD_LOGIC;
+                                        CountVal : out STD_LOGIC_VECTOR (3 downto 0));
+     end COMPONENT;
 
 
     signal DataRegisterContent  : STD_LOGIC_VECTOR(127 downto 0 );
@@ -80,6 +86,7 @@ architecture Behavioral of RSACore is
     signal ClkCounterIn         : STD_LOGIC_VECTOR(3 downto 0);
     signal ExpDone              : STD_LOGIC := '0';
     signal dataShiftedOut       : STD_LOGIC := '0';
+    signal CounterEnable        : STD_LOGIC;
 
 begin
 
@@ -93,7 +100,8 @@ begin
                                                 dataShiftedOut => dataShiftedOut,
                                                 
                                                 EnableDataReg => EnableDataReg,
-                                                EnableCTRLReg => EnableCtrlReg
+                                                EnableCTRLReg => EnableCtrlReg,
+                                                CounterEnable => CounterEnable
                                                 
                                         );
     DataRegister: negEdgeSipo PORT MAP (    DataIn => DataIn,
@@ -109,4 +117,13 @@ begin
                                             Resetn => Resetn,
                                             ParallelOut => CTRLRegisterContent
                                        );
+                                       
+    DataInCounter: NegEdgeCounter PORT MAP ( Enable => CounterEnable, 
+                                             Clk => Clk,
+                                             Resetn => Resetn,
+                                             CountVal => ClkCounterIn
+                                            );
+                                               
+    
+    
 end Behavioral;

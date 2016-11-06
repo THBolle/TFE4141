@@ -1,6 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  "../../../VHDL sources/NegEdgeCounter.vhd"
-vhdl xil_defaultlib  "../../../testbenches/NegEdgeCounter_tb.vhd"
-
-# Do not sort compile order
-nosort
