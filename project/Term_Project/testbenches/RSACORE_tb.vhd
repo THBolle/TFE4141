@@ -84,13 +84,36 @@ begin
     
     stim_process : process begin
     
-    wait for 100ns;
-    wait until rising_edge(Clk);
+    wait for 7ns;
     Resetn <= '1';
     wait until rising_edge(Clk);
     InitRsa <= '1';
+    DataIn <= x"11111111";
     wait until rising_edge(Clk);
     InitRsa <= '0';
+    DataIn <= x"22222222";
+    wait until rising_edge(Clk);
+    DataIn <= x"33333333";
+    wait until rising_edge(Clk);
+    DataIn <= x"44444444";
+    wait until rising_edge(Clk);
+    DataIn <= x"00000000";
+        
+    wait until rising_edge(CoreFinished);
+    wait until rising_edge(Clk);
+    StartRsa <= '1';
+    DataIn <= x"11111111";
+    wait until rising_edge(Clk);
+    StartRsa <= '0';
+    DataIn <= x"22222222";
+    wait until rising_edge(Clk);
+    DataIn <= x"33333333";
+    wait until rising_edge(Clk);
+    DataIn <= x"44444444";
+    wait until rising_edge(Clk);
+    DataIn <= x"00000000";
+    
+    wait for 1000ns;
             
             
     end process;

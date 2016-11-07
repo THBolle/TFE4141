@@ -78,12 +78,12 @@ begin
                         end if;  
                 
                 when RECEIVING_INIT =>
-                        if (ClkCounterIn = x"8") then
+                        if (ClkCounterIn = x"3") then
                             state <= IDLE;
                         end if;
                          
                 when RECEIVING_DATA =>
-                        if ( ClkCounterIn = x"8") then
+                        if ( ClkCounterIn = x"3") then
                             state <= PROCESSING;
                         end if;
                         
@@ -117,7 +117,7 @@ begin
     CoreFinishedn <= '1' when ( State = IDLE OR State = DONE OR InitRsa = '1' OR StartRsa = '1')
                 else '0';
                 
-    CounterEnable <= '1' when ( State = RECEIVING_DATA OR State = RECEIVING_INIT )
+    CounterEnable <= '1' when ( State = RECEIVING_DATA OR State = RECEIVING_INIT OR StartRsa = '1' OR InitRsa = '1')
                 else '0';
     
     
