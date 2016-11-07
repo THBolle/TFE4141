@@ -4,6 +4,8 @@
 
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -19,6 +21,8 @@ read_vhdl -library xil_defaultlib {
   {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/SIPO.vhd}
   {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/TopLevelStateMachine.vhd}
   C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/new/RSACore.vhd
+  C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/RSAExampleTestbench/RSAParameters.vhd
+  C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/RSAExampleTestbench/CompDecl.vhd
 }
 foreach dcp [get_files -quiet -all *.dcp] {
   set_property used_in_implementation false $dcp
