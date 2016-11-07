@@ -35,3 +35,13 @@ run 400 ns
 relaunch_sim
 relaunch_sim
 relaunch_sim
+reset_run synth_2
+launch_runs synth_2
+wait_on_run synth_2
+open_run synth_2 -name synth_2
+launch_simulation -mode post-synthesis -type functional
+source RSACORE_tb.tcl
+restart
+run 400 ns
+restart
+run 400 ns

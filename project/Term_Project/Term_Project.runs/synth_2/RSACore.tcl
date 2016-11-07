@@ -4,8 +4,6 @@
 
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 create_project -in_memory -part xc7z020clg484-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -17,8 +15,8 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:zed:part0:1.3 [current_project]
 read_vhdl -library xil_defaultlib {
-  {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/negEdgeSIPO.vhd}
-  {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/NegEdgeCounter.vhd}
+  {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/EdgeCounter.vhd}
+  {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/SIPO.vhd}
   {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/TopLevelStateMachine.vhd}
   C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/new/RSACore.vhd
 }
