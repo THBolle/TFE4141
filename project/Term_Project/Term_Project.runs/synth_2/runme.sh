@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log RSACORE_tb.vds -m64 -mode batch -messageDb vivado.pb -notrace -source RSACORE_tb.tcl
+EAStep vivado -log RSACore.vds -m64 -mode batch -messageDb vivado.pb -notrace -source RSACore.tcl

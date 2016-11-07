@@ -2,34 +2,35 @@
 # Vivado v2016.2 (64-bit)
 # SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
 # IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
-# Start of session at: Mon Nov 07 08:04:45 2016
-# Process ID: 7428
+# Start of session at: Mon Nov 07 10:20:44 2016
+# Process ID: 7252
 # Current directory: C:/Kristian/GitHub/TFE4141/project/Term_Project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6296 C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent504 C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr
 # Log file: C:/Kristian/GitHub/TFE4141/project/Term_Project/vivado.log
 # Journal file: C:/Kristian/GitHub/TFE4141/project/Term_Project\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.xpr
 update_compile_order -fileset sources_1
+synth_design -rtl -name rtl_1
+add_files -fileset sim_1 -norecurse C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACORE_tb.vhd
+remove_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACORE_tb.vhd
+update_compile_order -fileset sources_1
+set_property top RSACore [current_fileset]
+update_compile_order -fileset sources_1
+add_files -fileset sim_1 -norecurse C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/NegEdgeCounter_tb.vhd
+remove_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/NegEdgeCounter_tb.vhd
+update_compile_order -fileset sim_1
+add_files -fileset sim_1 -norecurse C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/TopLevelStateMachine_tb.vhd
+remove_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/TopLevelStateMachine_tb.vhd
+update_compile_order -fileset sim_1
+add_files -fileset sim_1 -norecurse C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/negEdgeSipo_tb.vhd
+remove_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/negEdgeSipo_tb.vhd
+update_compile_order -fileset sim_1
+reset_run synth_2
+launch_runs synth_2
+wait_on_run synth_2
+open_run synth_2 -name synth_2
 set_property top negEdgeSipo_tb [get_filesets sim_1]
 set_property top_lib xil_defaultlib [get_filesets sim_1]
-launch_simulation
-source negEdgeSipo_tb.tcl
-set_property top NegEdgeCounter_tb [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-launch_simulation
-launch_simulation
-source NegEdgeCounter_tb.tcl
-set_property top RSACORE_tb [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-launch_simulation
-launch_simulation
-source RSACORE_tb.tcl
-restart
-run 400 ns
-run 400 ns
-close_sim
-current_sim simulation_2
-close_sim
-close_sim
+update_compile_order -fileset sim_1

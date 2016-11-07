@@ -21,15 +21,14 @@ read_vhdl -library xil_defaultlib {
   {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/NegEdgeCounter.vhd}
   {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/TopLevelStateMachine.vhd}
   C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/new/RSACore.vhd
-  C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACORE_tb.vhd
 }
 foreach dcp [get_files -quiet -all *.dcp] {
   set_property used_in_implementation false $dcp
 }
 
-synth_design -top RSACORE_tb -part xc7z020clg484-1
+synth_design -top RSACore -part xc7z020clg484-1
 
 
-write_checkpoint -force -noxdef RSACORE_tb.dcp
+write_checkpoint -force -noxdef RSACore.dcp
 
-catch { report_utilization -file RSACORE_tb_utilization_synth.rpt -pb RSACORE_tb_utilization_synth.pb }
+catch { report_utilization -file RSACore_utilization_synth.rpt -pb RSACore_utilization_synth.pb }
