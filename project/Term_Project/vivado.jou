@@ -29,3 +29,7 @@ source RSACORE_tb.tcl
 restart
 run 400 ns
 run 400 ns
+close_sim
+current_sim simulation_2
+close_sim
+close_sim
