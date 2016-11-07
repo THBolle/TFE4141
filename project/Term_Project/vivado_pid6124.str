@@ -1,0 +1,154 @@
+/*
+
+Vivado v2016.2 (64-bit)
+SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
+Process ID: 6124
+
+Current time: 	11/7/16 4:49:54 PM CET
+Time zone: 	Central European Time (Europe/Berlin)
+
+OS: Windows 7
+Version: 6.1
+Architecture: amd64
+Available processors (cores): 4
+
+Screen size: 1280x800
+Screen resolution (DPI): 96
+Available screens: 1
+Default font: family=Tahoma,name=Tahoma,style=plain,size=11
+
+Java version: 	1.8.0_66 64-bit
+Java home: 	C:/Xilinx/Vivado/2016.2/tps/win64/jre
+
+User name: 	Kristian
+User home directory: C:/Users/Kristian
+User working directory: C:/Kristian/GitHub/TFE4141/project/Term_Project
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI Base root directory: C:/Xilinx/Vivado
+RDI Data directory: C:/Xilinx/Vivado/2016.2/data
+RDI Bin directory: C:/Xilinx/Vivado/2016.2/bin
+
+Vivado preferences path: C:/Users/Kristian/AppData/Roaming/Xilinx/Vivado/2016.2/vivado.ini
+Vivado layouts directory: C:/Users/Kristian/AppData/Roaming/Xilinx/Vivado/2016.2/layouts
+
+GUI allocated memory:	199 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 481 MB
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// Opening Vivado Project: C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr. Version: Vivado v2016.2 
+// bL:g (cv:JFrame):  Open Project : addNotify
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 40 MB (+39883kb) [00:00:06]
+// [Engine Memory]: 457 MB (+327383kb) [00:00:06]
+// [GUI Memory]: 50 MB (+7427kb) [00:00:07]
+// [GUI Memory]: 54 MB (+1840kb) [00:00:08]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// [Engine Memory]: 480 MB (+98kb) [00:00:08]
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.2/data/ip'. 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 483 MB. GUI used memory: 58 MB. Current time: 11/7/16 4:49:55 PM CET
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Project name: Term_Project; location: C:/Kristian/GitHub/TFE4141/project/Term_Project; part: xc7z020clg484-1
+// Tcl Message: open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:06 . Memory (MB): peak = 774.086 ; gain = 125.840 
+dismissDialog("Open Project"); // bL:g (cv:JFrame)
+// [GUI Memory]: 61 MB (+4395kb) [00:00:11]
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// Tcl Message: update_compile_order -fileset sources_1 
+// a:a (cv:JFrame): Critical Messages: addNotify
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // i:a (JPanel:JComponent, a:a)
+dismissDialog("Critical Messages"); // a:a (cv:JFrame)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources]", 3); // z:k (G:JPanel, cv:JFrame)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1]", 4); // z:k (G:JPanel, cv:JFrame)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, Non-module Files]", 5); // z:k (G:JPanel, cv:JFrame)
+// PAPropertyPanels.initPanels (NegEdgeCounter_tb.vhd) elapsed time: 0.2s
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, Non-module Files, NegEdgeCounter_tb.vhd]", 6, false, false, false, false, true, false); // z:k (G:JPanel, cv:JFrame) - Popup Trigger
+selectMenuItem(PAResourceCommand.PACommandNames_SRC_REPLACE_FILE, "Replace File..."); // af:JMenuItem (am:JPopupMenu, cv:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SRC_REPLACE_FILE
+setFileChooser("C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/EdgeCounter.vhd");
+// 'dw' command handler elapsed time: 3 seconds
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_files -from_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/EdgeCounter.vhd}} -to_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/NegEdgeCounter_tb.vhd -filesets [get_filesets *] 
+// Tcl Message: INFO: [filemgmt 20-762] Replacing file 'C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/NegEdgeCounter_tb.vhd' with file 'C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/EdgeCounter.vhd'. 
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// [GUI Memory]: 66 MB (+2480kb) [00:00:26]
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, Non-module Files, negEdgeSipo_tb.vhd]", 6, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, Non-module Files, negEdgeSipo_tb.vhd]", 6, false, false, false, false, true, false); // z:k (G:JPanel, cv:JFrame) - Popup Trigger
+selectMenuItem(PAResourceCommand.PACommandNames_SRC_REPLACE_FILE, "Replace File..."); // af:JMenuItem (am:JPopupMenu, cv:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SRC_REPLACE_FILE
+setFileChooser("C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/SIPO.vhd");
+// 'dw' command handler elapsed time: 3 seconds
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_files -from_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/SIPO.vhd}} -to_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/negEdgeSipo_tb.vhd -filesets [get_filesets *] 
+// Tcl Message: INFO: [filemgmt 20-762] Replacing file 'C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/negEdgeSipo_tb.vhd' with file 'C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/SIPO.vhd'. 
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, Non-module Files, negEdgeSipo_tb.vhd]", 6, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, Non-module Files, negEdgeSipo_tb.vhd]", 6, false, false, false, false, true, false); // z:k (G:JPanel, cv:JFrame) - Popup Trigger
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, negEdgeSIPO - Behavioral (SIPO.vhd)]", 8, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, NegEdgeCounter - Behavioral (EdgeCounter.vhd)]", 7, false, false, false, false, true, false); // z:k (G:JPanel, cv:JFrame) - Popup Trigger
+selectMenuItem(PAResourceCommand.PACommandNames_SRC_REPLACE_FILE, "Replace File..."); // af:JMenuItem (am:JPopupMenu, cv:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SRC_REPLACE_FILE
+setFileChooser("C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/EdgeCounter_tb.vhd");
+// 'dw' command handler elapsed time: 8 seconds
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_files -from_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/EdgeCounter_tb.vhd -to_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/EdgeCounter.vhd}} -filesets [get_filesets *] 
+// Tcl Message: INFO: [filemgmt 20-762] Replacing file 'C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/EdgeCounter.vhd' with file 'C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/EdgeCounter_tb.vhd'. 
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, RSACore - Behavioral (RSACore.vhd)]", 1); // z:k (G:JPanel, cv:JFrame)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, RSACore - Behavioral (RSACore.vhd)]", 1); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, negEdgeSIPO - Behavioral (SIPO.vhd)]", 8, false); // z:k (G:JPanel, cv:JFrame)
+// [Engine Memory]: 510 MB (+6808kb) [00:00:53]
+// HMemoryUtils.trashcanNow. Engine heap size: 528 MB. GUI used memory: 38 MB. Current time: 11/7/16 4:50:40 PM CET
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, negEdgeSIPO - Behavioral (SIPO.vhd)]", 8, false, false, false, false, true, false); // z:k (G:JPanel, cv:JFrame) - Popup Trigger
+selectMenuItem(PAResourceCommand.PACommandNames_SRC_REPLACE_FILE, "Replace File..."); // af:JMenuItem (am:JPopupMenu, cv:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SRC_REPLACE_FILE
+setFileChooser("C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/Sipo_tb.vhd");
+// 'dw' command handler elapsed time: 6 seconds
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_files -from_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/Sipo_tb.vhd -to_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/SIPO.vhd}} -filesets [get_filesets *] 
+// Tcl Message: INFO: [filemgmt 20-762] Replacing file 'C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/SIPO.vhd' with file 'C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/Sipo_tb.vhd'. 
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Simulation Settings]", 10, false); // x:Y (w:G, cv:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_SETTINGS
+// Project Settings: addNotify
+// TclEventType: FILE_SET_CHANGE
+selectButton(PAResourceOtoP.ProjectSettingsSimulationPanel_SELECT_TESTBENCH_TOP_MODULE, (String) null); // r:a (ag:z, k:aP)
+// bL:g (k:aP):  Analyze source files for top modules : addNotify
+// R:x (k:aP): Select Top Module: addNotify
+selectList(PAResourceQtoS.SelectTopModuleDialog_SELECT_TOP_MODULE, "EdgeCounter_tb", 3); // S:a (JViewport:JComponent, R:x)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a:JButton (JPanel:JComponent, R:x)
+dismissDialog("Select Top Module"); // R:x (k:aP)
+selectButton("CANCEL", "Cancel"); // JButton:AbstractButton (ButtonPanel:JPanel, k:aP)
+dismissDialog("Project Settings"); // k:aP (cv:JFrame)

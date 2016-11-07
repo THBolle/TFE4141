@@ -64,7 +64,7 @@ architecture Behavioral of RSACore is
     end COMPONENT;
     
     
-    COMPONENT negEdgeSipo  
+    COMPONENT Sipo  
                               Port (    DataIn : in STD_LOGIC_VECTOR (31 downto 0);
                                         CLK : in STD_LOGIC;
                                         Enable : in STD_LOGIC;
@@ -73,7 +73,7 @@ architecture Behavioral of RSACore is
                                     );
      end COMPONENT;
         
-     COMPONENT NegEdgeCounter generic ( countWidth : integer := 8);
+     COMPONENT EdgeCounter generic ( countWidth : integer := 8);
                                Port (   Enable : in STD_LOGIC;
                                         Clk : in STD_LOGIC;
                                         Resetn : in STD_LOGIC;
@@ -106,21 +106,21 @@ begin
                                                 CounterEnable => CounterEnable
                                                 
                                         );
-    DataRegister: negEdgeSipo PORT MAP (    DataIn => DataIn,
+    DataRegister: Sipo PORT MAP (    DataIn => DataIn,
                                             CLK => Clk,
                                             Enable => enableDataReg,
                                             Resetn => Resetn,
                                             ParallelOut => DataRegisterContent
                                         );
                                         
-     CTRLRegister:negEdgeSipo PORT MAP (    DataIn => DataIn,
+     CTRLRegister:Sipo PORT MAP (    DataIn => DataIn,
                                             CLK => Clk,
                                             Enable => enableCTRLReg,
                                             Resetn => Resetn,
                                             ParallelOut => CTRLRegisterContent
                                        );
                                        
-    DataInCounter: NegEdgeCounter generic map ( countWidth => 4 )  
+    DataInCounter: EdgeCounter generic map ( countWidth => 4 )  
                                   PORT MAP ( Enable => CounterEnable, 
                                              Clk => Clk,
                                              Resetn => Resetn,

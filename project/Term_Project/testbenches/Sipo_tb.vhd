@@ -34,9 +34,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity negEdgeSipo_tb is
 end negEdgeSipo_tb;
 
-architecture Behavioral of negEdgeSipo_tb is
+architecture Behavioral of Sipo_tb is
 
-    COMPONENT negEdgeSipo Port (    DataIn : in STD_LOGIC_VECTOR (31 downto 0);
+    COMPONENT Sipo Port (    DataIn : in STD_LOGIC_VECTOR (31 downto 0);
                                     CLK : in STD_LOGIC;
                                     Enable : in STD_LOGIC;
                                     Resetn : in STD_LOGIC;
@@ -57,7 +57,7 @@ architecture Behavioral of negEdgeSipo_tb is
     signal ParallelOut : std_logic_vector(127 downto 0);
 
 begin
-    UUT: negEdgeSipo PORT MAP ( DataIn=> DataIn, CLK => CLK, Enable =>Enable, Resetn=>Resetn,ParallelOut =>ParallelOut);
+    UUT: Sipo PORT MAP ( DataIn=> DataIn, CLK => CLK, Enable =>Enable, Resetn=>Resetn,ParallelOut =>ParallelOut);
     
     clk_process : process begin
         clk <= '0';

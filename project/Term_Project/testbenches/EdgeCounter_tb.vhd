@@ -35,9 +35,9 @@ entity NegEdgeCounter_tb is
 --  Port ( );
 end NegEdgeCounter_tb;
 
-architecture Behavioral of NegEdgeCounter_tb is
+architecture Behavioral of EdgeCounter_tb is
     
-    COMPONENT NegEdgeCounter 
+    COMPONENT EdgeCounter 
         generic ( countWidth : integer := 8);
                             Port ( Enable : in STD_LOGIC;
                                     Clk : in STD_LOGIC;
@@ -61,7 +61,7 @@ architecture Behavioral of NegEdgeCounter_tb is
 
 begin
 
-    UUT: NegEdgeCounter  generic map (countWidth => 4) PORT MAP (  Enable => Enable,
+    UUT: EdgeCounter  generic map (countWidth => 4) PORT MAP (  Enable => Enable,
                                     Clk => Clk,
                                     Resetn => Resetn,
                                     CountVal => CountVal
