@@ -64,7 +64,8 @@ architecture Behavioral of RSACore is
     end COMPONENT;
     
     
-    COMPONENT negEdgeSipo Port (    DataIn : in STD_LOGIC_VECTOR (31 downto 0);
+    COMPONENT negEdgeSipo  
+                              Port (    DataIn : in STD_LOGIC_VECTOR (31 downto 0);
                                         CLK : in STD_LOGIC;
                                         Enable : in STD_LOGIC;
                                         Resetn : in STD_LOGIC;
@@ -72,7 +73,8 @@ architecture Behavioral of RSACore is
                                     );
      end COMPONENT;
         
-     COMPONENT NegEdgeCounter Port (    Enable : in STD_LOGIC;
+     COMPONENT NegEdgeCounter generic ( countWidth : integer := 8);
+                               Port (   Enable : in STD_LOGIC;
                                         Clk : in STD_LOGIC;
                                         Resetn : in STD_LOGIC;
                                         CountVal : out STD_LOGIC_VECTOR (3 downto 0));
@@ -118,7 +120,8 @@ begin
                                             ParallelOut => CTRLRegisterContent
                                        );
                                        
-    DataInCounter: NegEdgeCounter PORT MAP ( Enable => CounterEnable, 
+    DataInCounter: NegEdgeCounter generic map ( countWidth => 4 )  
+                                  PORT MAP ( Enable => CounterEnable, 
                                              Clk => Clk,
                                              Resetn => Resetn,
                                              CountVal => ClkCounterIn

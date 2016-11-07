@@ -2,49 +2,30 @@
 # Vivado v2016.2 (64-bit)
 # SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
 # IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
-# Start of session at: Sun Nov 06 20:42:10 2016
-# Process ID: 7908
+# Start of session at: Mon Nov 07 08:04:45 2016
+# Process ID: 7428
 # Current directory: C:/Kristian/GitHub/TFE4141/project/Term_Project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7444 C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6296 C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr
 # Log file: C:/Kristian/GitHub/TFE4141/project/Term_Project/vivado.log
 # Journal file: C:/Kristian/GitHub/TFE4141/project/Term_Project\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.xpr
 update_compile_order -fileset sources_1
+set_property top negEdgeSipo_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+launch_simulation
+source negEdgeSipo_tb.tcl
+set_property top NegEdgeCounter_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
 launch_simulation
 launch_simulation
-reset_simulation -simset sim_1 -mode behavioral
+source NegEdgeCounter_tb.tcl
+set_property top RSACORE_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+launch_simulation
 launch_simulation
 source RSACORE_tb.tcl
 restart
 run 400 ns
 run 400 ns
-restart
-run 400 ns
-run 400 ns
-synth_design -rtl -name rtl_1
-launch_runs synth_1
-wait_on_run synth_1
-close_design
-open_run synth_1 -name synth_1
-report_utilization -name utilization_report
-set_property top TopLevelStateMachine_tb [current_fileset]
-update_compile_order -fileset sources_1
-reset_run synth_1
-launch_runs synth_1
-wait_on_run synth_1
-close_design
-synth_design -rtl -name rtl_1
-create_run synth_2 -flow {Vivado Synthesis 2016} -strategy {Vivado Synthesis Defaults}
-current_run [get_runs synth_2]
-set_property top RSACORE_tb [current_fileset]
-update_compile_order -fileset sources_1
-synth_design -rtl -name rtl_2
-refresh_design
-close_design
-close_design
-synth_design -rtl -name rtl_1
-launch_runs synth_2
-wait_on_run synth_2
-close_design
