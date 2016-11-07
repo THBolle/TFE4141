@@ -31,9 +31,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity NegEdgeCounter_tb is
+entity EdgeCounter_tb is
 --  Port ( );
-end NegEdgeCounter_tb;
+end EdgeCounter_tb;
 
 architecture Behavioral of EdgeCounter_tb is
     
@@ -77,23 +77,36 @@ begin
      
      
      stim_process : process begin
+     
              wait for 10ns;
              Resetn <= '1';
              wait for 100ns;
+             
+             wait until rising_edge(Clk);
              Enable <= '1';
-             wait for 100ns;
+             
+             for i in 0 to 9 loop
+                wait until rising_edge(Clk);
+             end loop;
+             
+             wait until rising_edge(Clk);
              Enable <= '0';
-             wait for 100ns;
+             
+             for i in 0 to 9 loop
+                wait until rising_edge(Clk);
+             end loop;
+             
              Enable <= '1';
-             wait for 100ns;
+             for i in 0 to 9 loop
+                wait until rising_edge(Clk);
+             end loop; 
+             
              Resetn <= '0';
-             wait for 100ns;
-             Resetn <= '1';
-             wait for 100ns;
-             Enable <= '0';
-             wait for 100ns;
+                         
              Enable <= '1';
-             wait;
+             for i in 0 to 9 loop
+                wait until rising_edge(Clk);
+             end loop; 
              
         end process;                        
 

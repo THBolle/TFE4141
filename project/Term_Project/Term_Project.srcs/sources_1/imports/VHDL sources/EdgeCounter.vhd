@@ -50,7 +50,7 @@ begin
         
         if ( Resetn = '0' or rising_edge(Enable) ) then 
             internalCountVal <= to_unsigned(0,countWidth);
-        elsif( falling_edge(Clk) AND Enable = '1' ) then 
+        elsif( rising_edge(Clk) AND Enable = '1' ) then 
             internalCountVal <= internalCountVal + 1;
         end if;
             

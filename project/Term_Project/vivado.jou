@@ -16,3 +16,25 @@ update_files -from_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL 
 update_files -from_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/SIPO.vhd}} -to_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/negEdgeSipo_tb.vhd -filesets [get_filesets *]
 update_files -from_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/EdgeCounter_tb.vhd -to_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/EdgeCounter.vhd}} -filesets [get_filesets *]
 update_files -from_files C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/Sipo_tb.vhd -to_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/SIPO.vhd}} -filesets [get_filesets *]
+set_property top EdgeCounter_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+launch_simulation
+reset_simulation -simset sim_1 -mode behavioral
+launch_simulation
+set_property top RSACore [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+launch_simulation
+source RSACore.tcl
+set_property top EdgeCounter_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+source EdgeCounter_tb.tcl
+relaunch_sim
+relaunch_sim
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+relaunch_sim
