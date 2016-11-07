@@ -54,7 +54,7 @@ begin
             if ( Resetn = '0') then
                 nextParOutput ( 127 downto 0 ) <= std_logic_vector(to_unsigned(0,128));
  
-            elsif ( falling_edge(CLK) AND Enable = '1' ) then
+            elsif ( rising_edge(CLK) AND Enable = '1' ) then
                     nextParOutput(127 downto 32)    <= nextParOutput(95 downto 0);
                     nextParOutput(31 downto 0 )     <= DataIn(31 downto 0);
             end if;
