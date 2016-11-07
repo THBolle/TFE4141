@@ -31,8 +31,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity negEdgeSipo_tb is
-end negEdgeSipo_tb;
+entity Sipo_tb is
+end Sipo_tb;
 
 architecture Behavioral of Sipo_tb is
 
@@ -60,20 +60,28 @@ begin
     UUT: Sipo PORT MAP ( DataIn=> DataIn, CLK => CLK, Enable =>Enable, Resetn=>Resetn,ParallelOut =>ParallelOut);
     
     clk_process : process begin
-        clk <= '0';
+        CLK <= '0';
         wait for clk_period/2;
-        clk <= '1';
+        CLK <= '1';
         wait for clk_period/2;
      end process;
     
     stim_proc: process begin
         DataIn <= x"A5A5A5A5";
-        wait for 1000ns;
+        wait for 157ns;
         
         Resetn <= '1';
-        wait for 1000ns;
-        
+        wait for 43ns;
+        wait until rising_edge(CLK);
         enable <= '1';
+        wait until rising_edge(CLK);
+        DataIn <= x"DEADBEEF";
+        wait until rising_edge(CLK);
+        DataIn <= x"AAAAAAAA";
+        wait until rising_edge(CLK);
+        DataIn <= x"11111111";
+        wait until rising_edge(CLK);
+        enable <= '0';
         wait for 1000ns;
         
         Resetn <= '0';
