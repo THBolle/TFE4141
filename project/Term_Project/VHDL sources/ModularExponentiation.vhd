@@ -68,12 +68,26 @@ COMPONENT MUX_2x128in_128Out  Port (
                                       );
 end COMPONENT; 
 
+COMPONENT MULTIPLIER Port ( 
+                            X : in  STD_LOGIC_VECTOR(127 downto 0 );
+                            Y : in  STD_LOGIC_VECTOR(127 downto 0 );
+                            Start : in STD_LOGIC;
+                            Clk : in STD_LOGIC;
+                            Z : out STD_LOGIC_VECTOR(127 downto 0 );
+                            Done : out STD_LOGIC
+                          );
+end COMPONENT;                                                        
+
 --internal signals
 signal M_Output : STD_LOGIC_VECTOR ( 127 downto 0 );
 signal M_Input  : STD_LOGIC_VECTOR ( 127 downto 0 );
+signal M_pow2   : STD_LOGIC_VECTOR ( 127 downto 0 );
+signal M_times_C : STD_LOGIC_VECTOR ( 127 downto 0 );
+signal C_out : STD_LOGIC_VECTOR ( 127 downto 0 );
 signal E_Lsb    : STD_LOGIC;
 signal M_source_sel : STD_LOGIC;
 signal M_load : STD_LOGIC;
+signal M_times_C_load : STD_LOGIC;
 signal E_enable : STD_LOGIC;
 signal E_shift_load : STD_LOGIC;
 
@@ -82,8 +96,8 @@ signal E_shift_load : STD_LOGIC;
 begin
  -- data path
 M_reg : dataRegister PORT MAP (DataIn => M_Input, Load_enable => M_load, Clk=> Clk, Resetn => Resetn ,DataOut => M_Output);
---C : dataRegister PORT MAP ();
---M_INPUT_MUX : MUX_2x128in_128Out PORT MAP ();
+C_reg : dataRegister PORT MAP ( DataIn => M_times_C, Load_enable => M_load, DataOut => C , Clk => Clk, Resetn => Resetn  );
+M_INPUT_MUX : MUX_2x128in_128Out PORT MAP (InA => M_pow2 , Inb => M, Sel => M_source_sel, OutA => M_Input );
 E_reg : PISO128to1 PORT MAP (DataIn => E , Enable => E_enable , Shift_load => E_shift_load, Clk => Clk,Resetn=>Resetn, DataOut => E_Lsb  );
 -- multiplier one
 -- multiplier two
