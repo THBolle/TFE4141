@@ -1,45 +1,59 @@
---Lars
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
---use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.NUMERIC_STD.ALL;
---use UNISIM.VComponents.all;
 
 entity multMod is
+    generic ( width         : integer := 8 );
     port (  clk, rst, run   : in STD_LOGIC;
-            finished        : out STD_LOGIC;
-            A, B, N         : in STD_LOGIC_VECTOR (127 downto 0);
-            --C               : out STD_LOGIC_VECTOR (127 downto 0));
-            P               : inout STD_LOGIC_VECTOR (255 downto 0));
+            busy            : out STD_LOGIC;
+            A, B, N         : in STD_LOGIC_VECTOR (width-1 downto 0);
+            C               : out STD_LOGIC_VECTOR (width-1 downto 0));
 end multMod;
 
-architecture rtl of multMod is
-    type state is (IDLE, MULT, MODU, DONE);
+architecture behav of multMod is
+    type state is (IDLE, INIT, MULT, MODU, DONE);
+    attribute enum_encoding : string;
+    attribute enum_encoding of state : type is "000 100 101 110 011";
     signal curr_state, next_state : state;
-    --signal P : std_logic_vector(255 downto 0);
-    signal cnt : integer range 0 to 127;
+    signal P : std_logic_vector(2*width-1 downto 0); --may be substituted with a shift register
+    signal cnt : natural range 0 to width-1;
+    signal busy_reg : std_logic;
 begin
     
-    --C <= P(127 downto 0); --for testing
+    C <= P(width-1 downto 0);
+    busy <= busy_reg;
 
-    CombFSM : process(cnt, run, curr_state)
+    CombFSM : process(P, cnt, run, curr_state)
     begin
         case curr_state is
         when IDLE =>
             if run = '0' then
                 next_state <= IDLE;
             else
-                next_state <= MULT;
+                next_state <= INIT;
             end if;
+        when INIT =>
+            next_state <= MULT;
         when MULT =>
-            next_state <= MODU;
-        when MODU =>
-            if cnt = 127 then
-                next_state <= DONE;
+            if P >= n then
+                next_state <= MODU;
             else
-                next_state <= MULT;
+                if cnt > 0 then
+                    next_state <= MULT;
+                else
+                    next_state <= DONE;
+                end if;
+            end if;
+        when MODU =>
+            if P >= n then
+                next_state <= MODU;
+            else
+                if cnt > 0 then
+                    next_state <= MULT;
+                else
+                    next_state <= DONE;
+                end if;
             end if;
         when DONE =>
             if run = '1' then
@@ -50,39 +64,37 @@ begin
         end case;
     end process CombFSM;
     
-    NextStateSeqv : process(clk)
+    StateSeqv : process(clk)
     begin
         if rising_edge(clk) then
             case curr_state is
-            when IDLE =>
-                finished <= '1';
+            when INIT =>
+                busy_reg <= '1';
                 P <= (others => '0');
-                --C <= (others => '0');
-                cnt <= 0;
             when MULT =>
-                finished <= '0';
-                P <= P(254 downto 0) & '0';
+                P <= P(2*width-2 downto 0) & '0';
                 if B(cnt) = '1' then
                     P <= P + A;
                 end if;
             when MODU =>
-                cnt <= cnt + 1;
-                if P > n then
-                    P <= P - n;
-                end if;
-            when DONE =>
-                --C <= P(127 downto 0);
+                P <= P - n;
+            when others => busy_reg <= '0';
             end case;
+            if next_state = MULT then
+                if curr_state > INIT then
+                    cnt <= cnt - 1;
+                else
+                    cnt <= width - 1;
+                end if;
+            end if;
         end if;
-    end process NextStateSeqv;
+    end process StateSeqv;
     
     SyncFSM : process(rst, clk) begin
-        --C <= P(127 downto 0); --only for testing
         if rst = '1' then
             curr_state <= IDLE;
         elsif rising_edge(clk) then
             curr_state <= next_state;
         end if;
     end process syncFSM;
-end rtl;
-
+end behav;
