@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_2" LaunchPart="xc7z020clg484-1" LaunchTime="1478538378">
-  <File Type="RDS-PROPCONSTRS" Name="RSACore_drc_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="RSACore_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="RSACore_timing_summary_synth.rpt"/>
   <File Type="PA-TCL" Name="RSACore.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="RSACore_drc_synth.rpt"/>
   <File Type="RDS-RDS" Name="RSACore.vds"/>
   <File Type="RDS-UTIL" Name="RSACore_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="RSACore_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="RSACore.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="RSACore_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="RSACore_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/VHDL sources/EdgeCounter.vhd">
