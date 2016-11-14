@@ -54,7 +54,7 @@ architecture Behavioral of ModExp_stateMachine is
     TYPE FSM_STATES is ( IDLE, LOAD_DATA_FROM_INPUT, STORE_AND_RELOAD ,START_MULT, WAIT_MULT, DONE );
     signal state : FSM_STATES; 
     
-    signal mult_counter : STD_LOGIC_VECTOR ( 7 downto 0 );
+    signal mult_counter : UNSIGNED ( 7 downto 0 );
     
     constant SHIFT_E : STD_LOGIC := '1';
     constant LOAD_E  : STD_LOGIC := '0';
@@ -67,7 +67,7 @@ begin
     process (Resetn, Clk ) 
     
     variable multipliersDone : STD_LOGIC;
-    variable mult_counter_limit : STD_LOGIC_VECTOR ( 7 downto 0);
+    variable mult_counter_limit : UNSIGNED ( 7 downto 0);
     
     begin 
     
@@ -75,36 +75,48 @@ begin
     
         if (Resetn = '0') then
             state <= IDLE;
+            mult_counter <= to_unsigned(0,8);
         elsif ( rising_edge ( Clk ) ) then 
             case state is
                 when IDLE => 
                     if DataReady = '1' then
                         state <= LOAD_DATA_FROM_INPUT;
+                        mult_counter <= to_unsigned(0,8); 
                     else 
                         state <= IDLE;
+                        mult_counter <= to_unsigned(0,8);
                     end if;
                  
                 when LOAD_DATA_FROM_INPUT =>
                         state <= START_MULT;
+                        mult_counter <= mult_counter;
                         
                 when START_MULT =>
                     State <= WAIT_MULT;
+                    mult_counter <= mult_counter;
                     
                 when WAIT_MULT =>
                      multipliersDone := Done_MPow2 and Done_MC;
-                     mult_counter_limit := std_logic_vector(to_unsigned(127,8));
+                     mult_counter_limit := to_unsigned(127,8);
                     
                     if (multipliersDone = '1' and mult_counter < mult_counter_limit) then 
                         State <= STORE_AND_RELOAD;
+                        mult_counter <= mult_counter + 1;
                     elsif ( multipliersDone = '1' and mult_counter >= mult_counter) then
                         State <= DONE;
+                        mult_counter <= to_unsigned(0,8);
+                    else 
+                        State <= WAIT_MULT;
+                        mult_counter <= mult_counter;
                     end if;
                     
                 when STORE_AND_RELOAD =>
                     State <= START_MULT;
+                    mult_counter <= mult_counter;
                     
                 when DONE =>
                     State <= IDLE;
+                    mult_counter <= mult_counter;
             end case;
         end if;  
     end process;
@@ -114,7 +126,7 @@ begin
     Start_Mpow2 <= '1' when State = START_MULT else '0';
     Start_MC    <= '1' when State = START_MULT and E_LSB = '1' else '0';
     Load_data <= '1' when State = LOAD_DATA_FROM_INPUT or State = STORE_AND_RELOAD else '0';
-    exp_done <= '1' when State = Done;
+    exp_done <= '1' when State = Done else '0';
     shift_load_E <= LOAD_E when state = LOAD_DATA_FROM_INPUT else SHIFT_E;
     M_input_source_sel <= INPUT_SOURCE when state = LOAD_DATA_FROM_INPUT else MPOW2_SOURCE;
     
