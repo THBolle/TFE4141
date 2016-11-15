@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
-use IEEE.NUMERIC_STD.ALL;
+--use IEEE.NUMERIC_STD.ALL;
 
 entity multMod is
     generic ( width         : integer := 8 );
@@ -23,7 +23,7 @@ begin
     
     C <= P(width-1 downto 0);
 
-    CombFSM : process(P, n, multDone, run, curr_state)
+    CombFSM : process(P, multDone, run, curr_state)
     begin
         finished <= '0';
         case curr_state is
@@ -69,31 +69,32 @@ begin
     SyncFSM : process(rst, clk) begin
         if rst = '1' then
             curr_state <= IDLE;
-        elsif falling_edge(clk) then
+        elsif rising_edge(clk) then
             curr_state <= next_state;
         end if;
     end process syncFSM;
     
-    StateSeqv : process(clk)
+    StateSeqv : process(curr_state)
     begin
-        if rising_edge(clk) then
-            case curr_state is
-            when INIT =>
-                P <= (others => '0');
-                cnt <= width - 1;
-            when MULT =>
-                P <= P(2*width-2 downto 0) & '0' + (A and (A'range => B(cnt)));
-                if (cnt > 0) then
-                    cnt <= cnt - 1;
-                    multDone <= false;
-                else
-                    multDone <= true;
-                end if;
-            when MODU =>
-                P <= P - n;
-            when others => null;
-            end case;
-        end if;
+--        if rising_edge(clk) then
+--            case curr_state is
+--            when INIT =>
+--                P <= (others => '0');
+--                cnt <= width - 1;
+--            when MULT =>
+--                P <= P(2*width-2 downto 0) & '0' + (A and (A'range => B(cnt)));
+--                if (cnt > 0) then
+--                    cnt <= cnt - 1;
+--                    multDone <= false;
+--                else
+--                    multDone <= true;
+--                end if;
+--            when MODU =>
+--                P <= P - n;
+--            when others => null;
+--            end case;
+--        end if;
+        
     end process StateSeqv;
     
 end behav;
