@@ -31,15 +31,15 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity EdgeCounter is
+entity NegEdgeCounter is
         generic ( countWidth : integer := 8);
     Port ( Enable : in STD_LOGIC;
            Clk : in STD_LOGIC;
            Resetn : in STD_LOGIC;
            CountVal : out STD_LOGIC_VECTOR (countWidth-1 downto 0));
-end EdgeCounter;
+end NegEdgeCounter;
 
-architecture Behavioral of EdgeCounter is
+architecture Behavioral of NegEdgeCounter is
     
    signal internalCountVal : UNSIGNED ( countWidth-1 downto 0 );
     
@@ -50,7 +50,7 @@ begin
         
         if ( Resetn = '0' or rising_edge(Enable) ) then 
             internalCountVal <= to_unsigned(0,countWidth);
-        elsif( rising_edge(Clk) AND Enable = '1' ) then 
+        elsif( falling_edge(Clk) AND Enable = '1' ) then 
             internalCountVal <= internalCountVal + 1;
         end if;
             

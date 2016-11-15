@@ -2,105 +2,23 @@
 # Vivado v2016.2 (64-bit)
 # SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
 # IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
-# Start of session at: Mon Nov 07 17:23:44 2016
-# Process ID: 3976
+# Start of session at: Tue Nov 15 18:53:46 2016
+# Process ID: 4596
 # Current directory: C:/Kristian/GitHub/TFE4141/project/Term_Project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6076 C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1272 C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr
 # Log file: C:/Kristian/GitHub/TFE4141/project/Term_Project/vivado.log
 # Journal file: C:/Kristian/GitHub/TFE4141/project/Term_Project\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.xpr
-launch_simulation
-launch_simulation
-source RSACORE_tb.tcl
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-restart
-run 400 ns
-run 400 ns
-relaunch_sim
-restart
-run 400 ns
-restart
-run 400 ns
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-restart
-run 400 ns
-relaunch_sim
-relaunch_sim
-relaunch_sim
-reset_run synth_2
-launch_runs synth_2
-wait_on_run synth_2
-open_run synth_2 -name synth_2
-launch_simulation -mode post-synthesis -type functional
-source RSACORE_tb.tcl
-restart
-run 400 ns
-restart
-run 400 ns
-synth_design -rtl -name rtl_1
-current_sim simulation_1
-close_sim
-launch_simulation
-source RSACORE_tb.tcl
-add_files -scan_for_includes C:/Kristian/GitHub/TFE4141/project/RSAExampleTestbench
-import_files C:/Kristian/GitHub/TFE4141/project/RSAExampleTestbench
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
 set_property source_mgmt_mode None [current_project]
-set_property top RSACoreTestBench [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode DisplayOnly [current_project]
-launch_simulation
-launch_simulation
-remove_files C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/RSAExampleTestbench/RSACoreTestBench.vhd
-set_property SOURCE_SET sources_1 [get_filesets sim_1]
-add_files -fileset sim_1 -norecurse -scan_for_includes {C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/CompDecl.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACoreTestBench.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSAParameters.vhd}
-import_files -fileset sim_1 -norecurse {C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/CompDecl.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACoreTestBench.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSAParameters.vhd}
-launch_simulation
-launch_simulation
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top RSACORE_tb [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode DisplayOnly [current_project]
-set_property top RSACore [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-reset_run synth_2
-launch_runs synth_2
-wait_on_run synth_2
-current_design synth_2
-close_design
-open_run synth_2 -name synth_2
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top RSACoreTestBench [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode DisplayOnly [current_project]
-current_sim simulation_3
-launch_simulation
-set_property SOURCE_SET sources_1 [get_filesets sim_1]
-add_files -fileset sim_1 -norecurse -scan_for_includes C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/ComFile.txt
-import_files -fileset sim_1 -force -norecurse C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/ComFile.txt
-current_sim simulation_3
-launch_simulation
-source RSACoreTestBench.tcl
-restart
-run 400 ns
-run 400 ns
-restart
-run 400 ns
-run 400 ns
-close_sim
-current_sim simulation_3
-close_sim
-close_sim
+remove_files {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/new/RSACore.vhd {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/TopLevelStateMachine.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/ModularExponentiation.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/modMult.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/EdgeCounter.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/inputRegister.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/multMod.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/SIPO.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/shiftOut.vhd}}
+remove_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/MUX_2x128In_128Out.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/ModExp_stateMachine.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/PISO128to1.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/dataRegister.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/modMultFSM.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/modMultMSA.vhd}}
+remove_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/VHDL sources/ModularExponentiationDataPath.vhd}}
+remove_files -fileset sim_1 {C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/multMod_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/EdgeCounter_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACORE_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/Sipo_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/TopLevelStateMachine_tb.vhd}
+remove_files -fileset sim_1 C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sim_1/imports/testbenches/RSACoreTestBench.vhd
+remove_files {C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/RSAExampleTestbench/RSAParameters.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.srcs/sources_1/imports/RSAExampleTestbench/CompDecl.vhd}
+add_files -norecurse -scan_for_includes {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/inputRegister.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/modMult.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/modMultMSA.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/ModExp_stateMachine.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/ModularExponentiation.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/shiftOut.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/modMultFSM.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/dataRegister.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/SIPO.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/TopLevelStateMachine.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/EdgeCounter.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/MUX_2x128In_128Out.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/PISO128to1.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/multMod.vhd}}
+remove_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/ModularExponentiation.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/dataRegister.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/MUX_2x128In_128Out.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/PISO128to1.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/ModExp_stateMachine.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/modMult.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/modMultFSM.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/modMultMSA.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/EdgeCounter.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/TopLevelStateMachine.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/inputRegister.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/multMod.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/SIPO.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/shiftOut.vhd}}
+add_files -norecurse -scan_for_includes {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/inputRegister.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/modMult.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/modMultMSA.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/ModExp_stateMachine.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/ModularExponentiation.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/shiftOut.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/modMultFSM.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/dataRegister.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/SIPO.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/TopLevelStateMachine.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/EdgeCounter.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/MUX_2x128In_128Out.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/PISO128to1.vhd} {C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/multMod.vhd}}
+add_files -norecurse -scan_for_includes {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/RSACore.vhd}}

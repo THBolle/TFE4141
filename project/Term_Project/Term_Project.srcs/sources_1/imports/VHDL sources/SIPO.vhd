@@ -31,16 +31,16 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity SIPO is
+entity negEdgeSIPO is
     Port ( DataIn : in STD_LOGIC_VECTOR (31 downto 0);
            CLK : in STD_LOGIC;
            Enable : in STD_LOGIC;
            Resetn : in STD_LOGIC;
            ParallelOut : out STD_LOGIC_VECTOR (127 downto 0)
           );
-end SIPO;
+end negEdgeSIPO;
 
-architecture Behavioral of SIPO is
+architecture Behavioral of negEdgeSIPO is
     
        signal nextParOutput : STD_LOGIC_VECTOR (127 downto 0);
 
