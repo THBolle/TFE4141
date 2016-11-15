@@ -1,9 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  "RSACORE_tb_func_synth.vhd"
-vhdl xil_defaultlib  "../../../../testbenches/TopLevelStateMachine_tb.vhd"
-vhdl xil_defaultlib  "../../../../testbenches/Sipo_tb.vhd"
-vhdl xil_defaultlib  "../../../../testbenches/EdgeCounter_tb.vhd"
-vhdl xil_defaultlib  "../../../../testbenches/RSACORE_tb.vhd"
-
-# Do not sort compile order
-nosort
