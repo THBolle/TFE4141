@@ -22,7 +22,7 @@ architecture Behavioural of shift_out_tb is
     constant clk_period : time := 20 ns;
 begin
     
-    PORTS:  PORT MAP (
+    UUT : shift_out_tb PORT MAP (
                 Clk => Clk,
                 Reset => Reset,
                 M => M                
