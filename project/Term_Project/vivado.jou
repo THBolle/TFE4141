@@ -26,3 +26,17 @@ set_property SOURCE_SET sources_1 [get_filesets sim_1]
 add_files -fileset sim_1 -norecurse -scan_for_includes {C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/Sipo_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/MUX_2x128in_128Out_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/ModExp_stateMachine_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/EdgeCounter_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/TopLevelStateMachine_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSAParameters.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/dataRegister_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/ModularExponentiation_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/modMult_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/CompDecl.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACORE_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/shiftOut_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACoreTestBench.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/PISO128to1_tb.vhd C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/multMod_tb.vhd}
 remove_files -fileset sim_1 C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/CompDecl.vhd
 remove_files -fileset sim_1 C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSAParameters.vhd
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+set_property top ModularExponentiation_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+launch_simulation
+source ModularExponentiation_tb.tcl
+restart
+run 1000 ns
+restart
+run 200 ns
+run 200 ns
+remove_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/inputRegister.vhd}}
