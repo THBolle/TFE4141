@@ -530,3 +530,13 @@ selectMenuItem(PAResourceQtoS.SrcMenu_REFRESH_HIERARCHY, "Refresh Hierarchy"); /
 // TclEventType: DG_UPDATE_GRAPH
 // TclEventType: DG_ANALYSIS_MSG_RESET
 // TclEventType: DG_UPDATE_GRAPH
+// Elapsed time: 35 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, RSACore - Behavioral (RSACore.vhd), DataInCounter - EdgeCounter - Behavioral (EdgeCounter.vhd)]", 5, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, RSACore - Behavioral (RSACore.vhd), DataInCounter - EdgeCounter - Behavioral (EdgeCounter.vhd)]", 5, false, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click
+selectCodeEditor("EdgeCounter.vhd", 153, 550); // bH:N (JPanel:JComponent, cv:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, RSACore - Behavioral (RSACore.vhd), DataRegister - SIPO - Behavioral (SIPO.vhd)]", 3, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, RSACore - Behavioral (RSACore.vhd), DataRegister - SIPO - Behavioral (SIPO.vhd)]", 3, false, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click
+// [GUI Memory]: 121 MB (+13kb) [00:22:45]
+selectCodeEditor("SIPO.vhd", 341, 471); // bH:N (JPanel:JComponent, cv:JFrame)
