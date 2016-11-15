@@ -3,11 +3,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity modMult is
 
-    Generic ( width : natural := 8 );
+    Generic ( width : integer := 8 );
     Port ( A : in STD_LOGIC_VECTOR (width-1 downto 0);
            B : in STD_LOGIC_VECTOR (width-1 downto 0);
            n : in STD_LOGIC_VECTOR (width-1 downto 0);
-           rst : in STD_LOGIC;
+           rst_n : in STD_LOGIC;
            clk : in STD_LOGIC;
            start : in STD_LOGIC;
            finished : out STD_LOGIC;
@@ -23,7 +23,7 @@ architecture Behavioral of modMult is
     component modMultFSM
         Generic ( width : natural );
         Port ( clk : in STD_LOGIC;
-               rst : in STD_LOGIC;
+               rst_n : in STD_LOGIC;
                start : in STD_LOGIC;
                MSA_done : in STD_LOGIC;
                rst_MSA : out STD_LOGIC;
@@ -46,7 +46,7 @@ begin
     FSM     :   modMultFSM  GENERIC MAP ( width => width )
                             PORT MAP (
                                 clk => clk,
-                                rst => rst,
+                                rst_n => rst_n,
                                 rst_MSA => rst_MSA,
                                 start => start,
                                 MSA_done => MSA_done,

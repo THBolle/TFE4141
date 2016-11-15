@@ -2,9 +2,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity modMultFSM is
-    Generic ( width : natural );
+    Generic ( width : integer );
     Port ( clk : in STD_LOGIC;
-           rst : in STD_LOGIC;
+           rst_n : in STD_LOGIC;
            start : in STD_LOGIC;
            MSA_done : in STD_LOGIC;
            rst_MSA : out STD_LOGIC;
@@ -15,8 +15,8 @@ architecture Behavioral of modMultFSM is
     type FSM_state is (IDLE, INIT, MSA, DONE);
     signal state : FSM_state;
 begin
-    stateSeqv: process(rst, clk) begin
-        if rst = '1' then
+    stateSeqv: process(rst_n, clk) begin
+        if rst_n = '0' then
             state <= IDLE;
         elsif rising_edge(clk) then
             case state is
@@ -33,7 +33,12 @@ begin
                 else
                     state <= MSA;
                 end if;
-            when DONE => state <= IDLE;
+            when DONE =>
+                if start = '1' then
+                    state <= INIT;
+                else
+                    state <= IDLE;
+                end if;
             end case;
         end if;
     end process stateSeqv;

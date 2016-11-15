@@ -5,7 +5,7 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity modMultMSA is
-    Generic ( width : natural );
+    Generic ( width : integer );
     Port ( A : in STD_LOGIC_VECTOR (width-1 downto 0);
            B : in STD_LOGIC_VECTOR (width-1 downto 0);
            n : in STD_LOGIC_VECTOR (width-1 downto 0);
@@ -19,10 +19,6 @@ architecture Behavioral of modMultMSA is
     signal cnt : integer range -1 to width;
     signal P : STD_LOGIC_VECTOR (width+1 downto 0);
 begin
-
-    process (rst) begin
-        
-    end process;
     
     process (rst, clk)
         variable P_sa : STD_LOGIC_VECTOR (width+1 downto 0);
