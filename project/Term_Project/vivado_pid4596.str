@@ -354,3 +354,114 @@ selectMenuItem(PAResourceQtoS.SrcMenu_REFRESH_HIERARCHY, "Refresh Hierarchy"); /
 // TclEventType: DG_UPDATE_GRAPH
 expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, RSACore - Behavioral (RSACore.vhd)]", 2); // z:k (G:JPanel, cv:JFrame)
 selectCodeEditor("SIPO.vhd", 174, 225); // bH:N (JPanel:JComponent, cv:JFrame)
+// [GUI Memory]: 104 MB (+1024kb) [00:10:41]
+// Elapsed time: 121 seconds
+selectButton(PAResourceCommand.PACommandNames_ADD_SOURCES, "Sources_add_sources"); // y:JideButton (CommandBar:DockableBar, cv:JFrame)
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+// b:g (cv:JFrame): Add Sources: addNotify
+selectRadioButton(PAResourceAtoD.AddSrcWizard_SPECIFY_SIMULATION_SPECIFIC_HDL_FILES, "Add or create simulation sources"); // a:JRadioButton (JPanel:JComponent, b:g)
+selectButton("NEXT", "Next >"); // JButton:AbstractButton (ButtonPanel:JPanel, b:g)
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files"); // a:JButton (F:JPanel, b:g)
+// Elapsed time: 50 seconds
+String[] filenames29306 = {"C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/CompDecl.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/EdgeCounter_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/MUX_2x128in_128Out_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/ModExp_stateMachine_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/ModularExponentiation_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/PISO128to1_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACORE_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSACoreTestBench.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/RSAParameters.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/Sipo_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/TopLevelStateMachine_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/dataRegister_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/modMult_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/multMod_tb.vhd", "C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/shiftOut_tb.vhd"};
+setFileChooser(filenames29306);
+selectButton("FINISH", "Finish"); // JButton:AbstractButton (ButtonPanel:JPanel, b:g)
+// 'h' command handler elapsed time: 58 seconds
+dismissDialog("Add Sources"); // b:g (cv:JFrame)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: set_property SOURCE_SET sources_1 [get_filesets sim_1] 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+selectButton(PAResourceEtoH.FileSetPanel_RELOAD, "Reload..."); // i:l (JPanel:JComponent, cv:JFrame)
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // ab:JMenu (JidePopupMenu:JPopupMenu, cv:JFrame)
+selectMenuItem(PAResourceQtoS.SrcMenu_REFRESH_HIERARCHY, "Refresh Hierarchy"); // af:JMenuItem (JidePopupMenu:JPopupMenu, cv:JFrame)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, RSACoreTestBench - struct (RSACoreTestBench.vhd)]", 17); // z:k (G:JPanel, cv:JFrame)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, multMod_tb - testbench (multMod_tb.vhd)]", 19); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, multMod_tb - testbench (multMod_tb.vhd), GENERICS - multMod - behav (multMod.vhd)]", 20, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, multMod_tb - testbench (multMod_tb.vhd), GENERICS - multMod - behav (multMod.vhd)]", 20, false, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, multMod_tb - testbench (multMod_tb.vhd), PORTS - multMod - behav (multMod.vhd)]", 21, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, multMod_tb - testbench (multMod_tb.vhd), PORTS - multMod - behav (multMod.vhd)]", 21, false, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, multMod_tb - testbench (multMod_tb.vhd), PORTS - multMod - behav (multMod.vhd)]", 21, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, multMod_tb - testbench (multMod_tb.vhd), PORTS - multMod - behav (multMod.vhd)]", 21, false, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, multMod_tb - testbench (multMod_tb.vhd), GENERICS - multMod - behav (multMod.vhd)]", 20, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, multMod_tb - testbench (multMod_tb.vhd), GENERICS - multMod - behav (multMod.vhd)]", 20, false, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, multMod_tb - testbench (multMod_tb.vhd)]", 19); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, EdgeCounter_tb - Behavioral (EdgeCounter_tb.vhd)]", 20, true); // z:k (G:JPanel, cv:JFrame) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, EdgeCounter_tb - Behavioral (EdgeCounter_tb.vhd)]", 20, true, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, RSACore - Behavioral (RSACore.vhd), DataInCounter - EdgeCounter]", 6, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, RSACore - Behavioral (RSACore.vhd), DataInCounter - EdgeCounter]", 6, false, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, NegEdgeCounter - Behavioral (EdgeCounter.vhd)]", 9, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, NegEdgeCounter - Behavioral (EdgeCounter.vhd)]", 9, false, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click
+selectCodeEditor("EdgeCounter.vhd", 69, 413); // bH:N (JPanel:JComponent, cv:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("EdgeCounter.vhd", 248, 551); // bH:N (JPanel:JComponent, cv:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("EdgeCounter.vhd", 78, 522); // bH:N (JPanel:JComponent, cv:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("EdgeCounter.vhd", 199, 701); // bH:N (JPanel:JComponent, cv:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("EdgeCounter.vhd", 186, 369); // bH:N (JPanel:JComponent, cv:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("EdgeCounter.vhd", 253, 395); // bH:N (JPanel:JComponent, cv:JFrame)
+selectCodeEditor("EdgeCounter.vhd", 237, 436); // bH:N (JPanel:JComponent, cv:JFrame)
+selectCodeEditor("EdgeCounter.vhd", 28, 326); // bH:N (JPanel:JComponent, cv:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("EdgeCounter.vhd", 127, 440); // bH:N (JPanel:JComponent, cv:JFrame)
+selectButton(PAResourceEtoH.FileSetPanel_RELOAD, "Reload..."); // i:l (JPanel:JComponent, cv:JFrame)
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // ab:JMenu (JidePopupMenu:JPopupMenu, cv:JFrame)
+selectMenuItem(PAResourceQtoS.SrcMenu_REFRESH_HIERARCHY, "Refresh Hierarchy"); // af:JMenuItem (JidePopupMenu:JPopupMenu, cv:JFrame)
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+selectButton(PAResourceEtoH.FileSetPanel_0_WARNING, "2 warnings"); // i:l (CommandBar:DockableBar, cv:JFrame)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Analysis Results, sources_1, [HDL 9-806] Syntax error near =. [C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/shiftOut.vhd:26]. ]", 2, true); // al:k (JViewport:JComponent, cv:JFrame) - Node
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Kristian\GitHub\TFE4141\project\Term_Project\VHDL sources\shiftOut.vhd;-;;-;16;-;line;-;26;-;;-;16;-;"); // al:k (JViewport:JComponent, cv:JFrame)
+// [GUI Memory]: 110 MB (+6kb) [00:14:13]
+// Elapsed time: 13 seconds
+selectCheckBox(PAResourceItoN.MsgView_CRITICAL_WARNINGS, (String) null, false); // h:JCheckBox (JPanel:JComponent, cv:JFrame): FALSE
+selectCheckBox(PAResourceItoN.MsgView_CRITICAL_WARNINGS, (String) null, true); // h:JCheckBox (JPanel:JComponent, cv:JFrame): TRUE
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Analysis Results, sources_1]", 1); // al:k (JViewport:JComponent, cv:JFrame)
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Analysis Results, sources_1, [HDL 9-806] Syntax error near =. [C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/shiftOut.vhd:26]. ]", 2); // al:k (JViewport:JComponent, cv:JFrame)
+// Elapsed time: 39 seconds
+selectCodeEditor("shiftOut.vhd", 416, 426); // bH:N (JPanel:JComponent, cv:JFrame)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 148 seconds
+closeView(PAResourceOtoP.PAViews_CODE, "Code"); // D:b
+selectButton(PAResourceEtoH.FileSetPanel_RELOAD, "Reload..."); // i:l (JPanel:JComponent, cv:JFrame)
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // ab:JMenu (JidePopupMenu:JPopupMenu, cv:JFrame)
+selectMenuItem(PAResourceQtoS.SrcMenu_REFRESH_HIERARCHY, "Refresh Hierarchy"); // af:JMenuItem (JidePopupMenu:JPopupMenu, cv:JFrame)
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, shiftOut - Behavioral (shiftOut.vhd)]", 30, false); // z:k (G:JPanel, cv:JFrame)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources, sim_1, shiftOut - Behavioral (shiftOut.vhd)]", 30, false, false, false, false, false, true); // z:k (G:JPanel, cv:JFrame) - Double Click
+selectButton(PAResourceEtoH.FileSetPanel_0_CRITICAL_WARNING, "2 critical warnings"); // i:l (CommandBar:DockableBar, cv:JFrame)
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Analysis Results, sim_1, [HDL 9-806] Syntax error near PORT. [C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/shiftOut_tb.vhd:25]. ]", 2); // al:k (JViewport:JComponent, cv:JFrame)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Analysis Results, sim_1, [HDL 9-806] Syntax error near PORT. [C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/shiftOut_tb.vhd:25]. , [HDL 9-806] Syntax error near ;. [C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/shiftOut_tb.vhd:29]. ]", 3, false); // al:k (JViewport:JComponent, cv:JFrame)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Kristian\GitHub\TFE4141\project\Term_Project\testbenches\shiftOut_tb.vhd;-;;-;16;-;line;-;29;-;;-;16;-;"); // al:k (JViewport:JComponent, cv:JFrame)
+selectCodeEditor("shiftOut_tb.vhd", 284, 492); // bH:N (JPanel:JComponent, cv:JFrame)
+selectButton(RDIResource.HPopupTitle_CLOSE, (String) null); // l:JideButton (JPanel:JComponent, ResizableWindow:JWindow)
+selectCodeEditor("shiftOut_tb.vhd", 598, 336); // bH:N (JPanel:JComponent, cv:JFrame)
+selectCodeEditor("shiftOut_tb.vhd", 450, 466); // bH:N (JPanel:JComponent, cv:JFrame)
+// [GUI Memory]: 115 MB (+59kb) [00:18:13]
+// Elapsed time: 14 seconds
+selectCodeEditor("shiftOut_tb.vhd", 173, 513); // bH:N (JPanel:JComponent, cv:JFrame)
