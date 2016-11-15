@@ -1,0 +1,201 @@
+Bitvis Utility Library - Overview on Versions and Changes
+==============================================================
+
+----------------------------------------------------------------------
+
+v2.6.0
+----------
+Released: 2015-08-24
+
+All changes should be backwards compatible within 2.x.x
+- Updated quick reference with default values for optional parameters.
+- Added new alert level, NO_ALERT. Any alert with this alert level will be ignored.
+- Added file selection for logs. The log() and log_text_block() procedures now accept
+  arguments defining where to write the message (console and log file, console only
+  or log file only), and what file name to write to (when applicable).
+- Added Message ID ID_BFM_POLL. Used inside a BFM when polling until reading a given 
+  value, i.e., to show all reads until expected value found.
+
+v2.5.1
+----------
+Released: 2015-06-17
+
+All changes should be backwards compatible within 2.x.x
+- Fixed memory leak in log procedure.
+- Fixed clock_generator procedure to comply with Riviera-PRO.
+- Improved performance of enable_log_msg function.
+- Cleaned up Modelsim project file.
+
+v2.5.0
+----------
+Released: 2015-06-01
+
+All changes should be backwards compatible within 2.x.x
+- Added new procedure await_stable().
+- Added deprecation procedure. This procedure is used to print a deprecation message for outdated procedures. The deprecation messages can
+  be enabled/disabled by changing the C_DEPRECATE_SETTING constant adaptations_pkg. The constant changes the deprecation message printing
+  globally for all applicable sub-programs.
+- Normalise():
+  - Parameters value and target can not have a length of zero. Added a check for this.
+  - Fixed bug in overload for signed type.
+  - This procedure has been replaced by normalize_and_check(). The functionality is exactly the same, only the name has changed. A 
+    deprecation message will be printed for normalise() once for every simulation.
+- Added randomize(). This is a replacement for randomise(), but randomise() is still included for legacy use. A deprecation message will be
+  printed for randomise() once for every simulation.
+- Added option for enabling the printing of alerts on a single line. The option is controlled by the boolean constant C_SINGLE_LINE_ALERT 
+  in adaptations_pkg. Disabled by default.
+- Added option for enabling the printing of log messages on a single line. The option is controlled by the boolean constant 
+  C_SINGLE_LINE_LOG in adaptations_pkg. Disabled by default.
+- Added optional QUIET/NON_QUIET parameter to disable_log_msg method.
+- Fixed to_string bug which caused error when using one bit slv and signed.
+- Added logging support for text blocks (VHDL line) through log_text_block().
+- Added new Ids for larger headers (ID_LOG_HDR_LARGE and ID_LOG_HDR_XL).
+- Moved C_LOG_HDR_FOR_WAVEVIEW_WIDTH from adaptations_pkg to types_pkg, and increased default from 50 to 100.
+- Added replace procedures for string and line type. These procedures will replace a given target character with a given exchange 
+  character.
+
+v2.4.2
+----------
+Released: 2015-03-27
+
+All changes should be backwards compatible within 2.x.x
+- Changed method of deleting libraries in compile scripts in order to make them platform independent.
+
+v2.4.1
+----------
+Released: 2015-02-18
+
+Released for Jim Lewis and OSVVM interfacing checks only
+All changes shuld be backwards compatible within 2.x.x
+- Added function: is_log_msg_enabled()
+
+
+v2.4.0
+----------
+Released: 2015-02-06
+
+All changes shuld be backwards compatible within 2.x.x
+- Removed copyright and license info from simulation (Moved to elaboration)
+- Added Optional initial info on Library and last updates - for novices (mat be switched off via adaptations_pkg.vhd)
+- Added some new UVVM IDs and modified som Library internal IDs
+- Added ID-specific message indentation. Can be used by anyone, but primarily intended for UVVM to improve readability
+- Added optional scope parameter to several methods to make library more consistent - especially for larger systems
+- Added optional message and scope parameter to some methods to make library more consistent - especially for larger systems
+- Added '\r' as a special character for strings to messages (log/alert).
+  Same as '\n', but \n shifts only the message field one line down, whereas \r inserts a complete blank line
+- Improved check_value(): Better mismatch report format
+- Added string methods:
+  - new functions pos_of_leftmost(), pos_of_rightmost()
+  - new function get_string_between_delimeters()
+  - new function get_procedure_name_from_instance_name()
+  - new function get_process_name_from_instance_name()
+  - new function get_entity_name_from_instance_name()
+  - new function remove_initial_chars()
+  - new overload for function to_string(string) -- return string with only valid ascii characters
+- Modified compile scripts to remove library directory rather than using vdel - as vdel does not work between Modelsim versions
+- Additional minor changes and cosmetic fixes.
+- Added fix_vmap script into the compile script to handle a bug with vmap on linux
+- Added overload for check_value where we compare boolean to boolean
+
+v2.3.0
+----------
+Released: 2014-08-15
+
+- Added new functions: gen_pulse() and clock_generator()
+- Reduced initial license header
+- Included powerpoint presentations for making good testbenches and using the library
+
+v2.2.1
+----------
+Released: 2014-03-14
+
+- Fixed mismatch between procedure declaration in header and body
+- Modelsim scripts: changed default vhdl version to vhdl2008
+
+v2.2.0
+----------
+Released: 2014-01-26
+
+- Added new function: ascii_to_char() and char_to_ascii()
+- Added to the message that is logged when test bench is stopped due to an alert
+
+v2.1.1
+----------
+Released: 2013-10-28
+
+- Bugfix: the to_string(signed) function did not handle negative numbers when converting from signed to decimal: to_string(my_signed, DEC)
+
+
+v2.1.0
+----------
+Released: 2013-09-25
+
+Note to users:
+- If you use custom compile scripts,
+  you must change the Bitvis_Util source
+  directory name from src to src93, src2002 or src2008,
+  depending on which VHDL version you compile for.
+
+General:
+- Added support for vhdl2008.
+- Made a separate source directory for each vhdl version: src93, src2002 and src2008
+  The user must choose which of these src directories to compile
+- New compile scripts, in order to be able to choose between using the vhdl93, vhdl2002 or vhdl2008 version
+- report_alert_counters() may now be called with an argument:
+  - INTERMEDIATE = Print alert counters only
+  - FINAL        = Print counters and print simulation conclusion (Success/Fail)
+                   Typically call with FINAL from the end of the test sequencer
+
+New features:
+- Added new random functions and procedures: random sl and time
+
+v2.0.0
+----------
+Released: 2013-08-09
+
+General:
+Major modifications to make a vhdl'93 compatible version, and at the same time maintain a 2002
+compatible version to allow 100% safe update of shared variables. To minimise the differences
+all protected variables that are not functionally needed for safe behaviour have been changed
+into ordinary shared variables - for instance when only a single process is allowed to modify
+a shared variable and no critical interaction between modification and a pure read.
+
+Common changes for vhdl'93 and 2002:
+- Type changes (Note: Changes related to this type changes are not listed explicitly)
+  - from protected to normal shared - with corresponding name change
+  - shared_initialised_util
+  - shared_msg_id_panel
+  - shared_log_file_name_is_set
+  - shared_alert_file_name_is_set
+  - shared_warned_time_stamp_trunc
+  - shared_alert_attention
+  - shared_stop_limit
+  - shared_log_hdr_for_waveview
+  - shared_seed1
+  - shared_seed2
+  - t_attention has been replaced by t_attention, which has a new litteral 'EXPECT'
+(Litteral COUNT has been replaced by REGARD, as they are all really counters)
+  -  Replaced protected methods in 'methods' by standard functions defined in a new package
+  'vhdl_version_layer' with functions to access protected or standard shared depending
+  on compatibility requirements. Hence there are two file versions of 'vhdl_version_layer'.
+
+  - Added message IDs
+  - ID_VVC_CONSTRUCTOR
+  - Some internal functionality has been modified or removed. Not visible for users.
+  - Improved some alert messages
+  - Fixed wrong order of scope and msg in alert calls in normalise-procedures
+
+  Changes NOT common for vhdl'93 and 2002:
+  - vhdl_version_layer split into vhdl_version_layer_93 and vhdl_version_layer_2002
+  - vhdl93: Substituted protected alert counter with ordinary shared variable.
+
+
+  v1.0.0
+  ----------
+  Released: 2013-04-09
+  First open source version.
+  Hence no change history
+(A list of changes from previous commercial versions is available for existing Bitvis Utility Library customers)
+
+
+

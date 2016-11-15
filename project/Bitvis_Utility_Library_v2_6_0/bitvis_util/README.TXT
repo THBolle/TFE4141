@@ -1,0 +1,11 @@
+-----------------------------------------------------------
+-- Directory structure                                   -- 
+-----------------------------------------------------------
+
+- bitvis_util     : Bitvis Utility Library
+  - doc           : Quick Reference
+  - script        : Compile scripts for Bitvis Utility Library
+  - sim           : Simulation directory with a Modelsim project file. Simulation log files will be generated in this directory during simulation.  
+  - src93         : Source code for the VHDL93 version of Bitvis Utility Library
+  - src2002       : Source code for the VHDL2002 version of Bitvis Utility Library
+  - src2008       : Source code for the VHDL2008 version of Bitvis Utility Library
