@@ -101,7 +101,7 @@ begin
                      else 
                         multipliersDone := Done_MPow2 and Done_MC;
                      end if;
-                     mult_counter_limit := to_unsigned(127,8);
+                     mult_counter_limit := to_unsigned(128,8);
                     
                     if (multipliersDone = '1' and mult_counter < mult_counter_limit) then 
                         State <= STORE_AND_RELOAD;
