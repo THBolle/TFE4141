@@ -87,6 +87,8 @@ end COMPONENT;
 
 signal DataRegisterContent  : STD_LOGIC_VECTOR(127 downto 0 );
 signal CTRLRegisterContent  : STD_LOGIC_VECTOR(127 downto 0 ); 
+
+
 signal EnableDataReg        : STD_LOGIC;
 signal EnableCTRLReg        : STD_LOGIC;
 signal ClkCounterIn         : STD_LOGIC_VECTOR(3 downto 0);
@@ -103,7 +105,7 @@ FSM : TopLevelStateMachine PORT MAP (   InitRsa => InitRsa,             StartRsa
                                         EnableDataReg => EnableDataReg, EnableCTRLReg => EnableCtrlReg,
                                         CounterEnable => CounterEnable  );
     
-DataRegister : Sipo         PORT MAP (  DataIn => DataIn,               CLK => Clk,
+M_data_register : Sipo     PORT MAP (  DataIn => DataIn,               CLK => Clk,
                                         Enable => enableDataReg,        Resetn => Resetn,
                                         ParallelOut => DataRegisterContent );
                                         

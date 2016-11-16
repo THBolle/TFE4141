@@ -36,7 +36,8 @@ entity SIPO is
            CLK : in STD_LOGIC;
            Enable : in STD_LOGIC;
            Resetn : in STD_LOGIC;
-           ParallelOut : out STD_LOGIC_VECTOR (127 downto 0)
+           ParallelOut : out STD_LOGIC_VECTOR (127 downto 0);
+           DaisyChainOut : out STD_LOGIC_VECTOR ( 31 downto 0 ) -- for daisy chain config of registers
           );
 end SIPO;
 
@@ -63,5 +64,6 @@ begin
         
         -- set output with combinatorial logic to avoid extra registers:
         ParallelOut(127 downto 0) <= nextParOutput(127 downto 0 );
+        DaisyChainOut ( 31 downto 0 )  <= nextParOutput ( 127 downto 96 );
 
 end Behavioral;

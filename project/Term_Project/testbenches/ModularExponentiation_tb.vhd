@@ -81,10 +81,11 @@ begin
         Resetn <= '1';
         wait until rising_edge(Clk);
         M ( 127 downto 0 ) <= x"12345678123456781234567812345678";
-        E ( 127 downto 0 ) <= x"5555AAAA5555AAAA5555AAAA5555AAAF";
+        E ( 127 downto 0 ) <= x"5555AAAA5555AAAA5555AAAA5555AAAA";
         wait until rising_edge(Clk);
         DataInReady <= '1';
         wait for 20ns;
+        wait for 1ms;
     end process;
     
 
