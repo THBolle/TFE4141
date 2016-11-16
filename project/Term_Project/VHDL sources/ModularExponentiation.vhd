@@ -113,6 +113,7 @@ signal M_reg_input      : STD_LOGIC_VECTOR ( 127 downto 0 );
 
 signal C_reg_output     : STD_LOGIC_VECTOR ( 127 downto 0 );
 signal C_reg_input      : STD_LOGIC_VECTOR ( 127 downto 0 );
+constant C_reg_startVal : STD_LOGIC_VECTOR ( 127 downto 0 ) := x"00000000000000000000000000000001";
 
 -- -- multiplier signals -- -- 
 -- Multiplier 1 calculates M^2
@@ -136,9 +137,9 @@ signal E_shift_load_enable          : STD_LOGIC;
 signal load_data                : STD_LOGIC;
 
 
--- -- M input demux signals -- -- 
-signal M_reg_input_source_sel       : STD_LOGIC; -- source select for M register. 1 = Mult 1 output, 0 = Input port
-
+-- -- mux signals -- -- 
+signal reg_input_source_sel       : STD_LOGIC;  -- source select for M register. 1 = Mult 1 output, 0 = Input port
+                                                -- source select for C register. 1 = Mult 2 output, 0 = Default value; 
 
 -- system constants
 constant multiplier_width : integer := 128;
@@ -149,11 +150,14 @@ begin
 M_reg : dataRegister             PORT MAP ( DataIn => M_reg_input ,             Load_enable => load_data, 
                                             Clk=> Clk,  Resetn => Resetn ,      DataOut => M_reg_output);
                                             
-C_reg : dataRegister             PORT MAP ( DataIn => Mult2_result_MtimesC,     Load_enable => load_data, 
+C_reg : dataRegister             PORT MAP ( DataIn =>  C_reg_input,             Load_enable => load_data, 
                                             Clk => Clk,   Resetn => Resetn,     DataOut => C_reg_output   );
                                             
 M_IN_MUX : MUX_2x128in_128Out    PORT MAP ( InA => M ,                          Inb => Mult1_result_MtimesM , 
-                                            Sel => M_reg_input_source_sel,      OutA => M_reg_input );
+                                            Sel => reg_input_source_sel,        OutA => M_reg_input );
+                                            
+C_IN_MUX : MUX_2x128in_128Out    PORT MAP ( InA => C_reg_startVal,              Inb => Mult2_result_MtimesC,
+                                            Sel => reg_input_source_sel,        OutA => C_reg_input);
                                             
 E_reg : PISO128to1               PORT MAP ( DataIn => E ,                       Enable => load_data , 
                                             Shift_load => E_shift_load,         Clk => Clk, 
@@ -182,10 +186,12 @@ FSM : ModExp_stateMachine       PORT MAP ( DataReady => DataInReady,            
                                                 Clk => Clk,                     Resetn => Resetn,
                                                 Start_Mpow2 => Mult1_start,     Start_MC => Mult2_start,
                                                 Load_data => load_data,         exp_done => ExpDone,
-                                                shift_load_E => E_shift_load,   M_input_source_sel => M_reg_input_source_sel    
+                                                shift_load_E => E_shift_load,   M_input_source_sel => reg_input_source_sel    
                                                 );
 
 
+-- -- combinatorial mapping from internal signal to output -- --
+C (127 downto 0 ) <= C_reg_output ( 127 downto 0 );
                                               
 
 

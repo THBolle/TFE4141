@@ -92,9 +92,9 @@ begin
                             state <= DONE;
                         end if;
                 when DONE =>
-                        if (dataShiftedOut = '1') then
+                       -- if (dataShiftedOut = '1') then
                             state <= IDLE;
-                        end if;    
+                       -- end if;    
                  
               end case;  
               
@@ -103,7 +103,7 @@ begin
     end process;
     
     -- Output logic
-    DataReceived <= '1' when  ( State = PROCESSING) OR (State = DONE) 
+    DataReceived <= '1' when  ( State = PROCESSING)
                else '0';  
    
 

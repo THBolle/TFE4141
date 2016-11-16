@@ -16,9 +16,9 @@ architecture testbench of modMult_tb is
     constant width              : integer                               := 128;
     signal clk, rst_n, start    : STD_LOGIC                             := '0';
     signal finished             : STD_LOGIC;
-    signal A                    : STD_LOGIC_VECTOR (width-1 downto 0)   := x"434e76d7965f50afa6d6af593e753085";
-    signal B                    : STD_LOGIC_VECTOR (width-1 downto 0)   := x"0c21dafc9c270f489acb80fb1cdfa127";
-    signal N                    : STD_LOGIC_VECTOR (width-1 downto 0)   := x"52f201d560c0db8d410611c8a5ce1123";
+    signal A                    : STD_LOGIC_VECTOR (width-1 downto 0)   := x"00000000000000000000000000000000";-- x"434e76d7965f50afa6d6af593e753085";
+    signal B                    : STD_LOGIC_VECTOR (width-1 downto 0)   := x"00000000000000000000000000000000";--x"0c21dafc9c270f489acb80fb1cdfa127";
+    signal N                    : STD_LOGIC_VECTOR (width-1 downto 0)   := x"819DC6B2574E12C3C8BC49CDD79555FD"; --x"52f201d560c0db8d410611c8a5ce1123";
     signal C                    : STD_LOGIC_VECTOR (width-1 downto 0);  --   34c10b0a2b6e7fbf76bfbe47bed76a54
     constant clk_period : time := 20 ns;
 begin
@@ -36,6 +36,8 @@ begin
         wait for clk_period/2;
         rst_n <= '1';
         start <= '1';
+        A <= x"0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+        B <= x"0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
         wait for clk_period;
         start <= '0';
         wait;
