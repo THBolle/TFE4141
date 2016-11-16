@@ -96,7 +96,11 @@ begin
                     mult_counter <= mult_counter;
                     
                 when WAIT_MULT =>
-                     multipliersDone := Done_MPow2 and Done_MC;
+                     if E_LSB = '0' then
+                        multipliersDone := Done_MPow2;
+                     else 
+                        multipliersDone := Done_MPow2 and Done_MC;
+                     end if;
                      mult_counter_limit := to_unsigned(127,8);
                     
                     if (multipliersDone = '1' and mult_counter < mult_counter_limit) then 

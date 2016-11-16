@@ -50,3 +50,30 @@ restart
 run 6000 ns
 restart
 run 6000 ns
+close_sim
+launch_simulation
+source ModularExponentiation_tb.tcl
+restart
+run 12000 ns
+close_sim
+launch_simulation
+source ModularExponentiation_tb.tcl
+relaunch_sim
+restart
+run 12000 ns
+restart
+run 12000 ns
+relaunch_sim
+restart
+run 12000 ns
+restart
+run 12000 ns
+restart
+run 600 us
+restart
+run 800 us
+restart
+relaunch_sim
+run 800 us
+restart
+run 800 us
