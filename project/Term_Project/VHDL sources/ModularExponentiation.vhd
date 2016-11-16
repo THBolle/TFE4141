@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -34,6 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity ModularExponentiation is
     Port ( M : in STD_LOGIC_VECTOR (127 downto 0);
            E : in STD_LOGIC_VECTOR (127 downto 0);
+           N : in STD_LOGIC_VECTOR (127 downto 0);
            DataInReady : in STD_LOGIC;
            Clk : in STD_LOGIC;
            Resetn : in STD_LOGIC;
@@ -74,14 +75,17 @@ COMPONENT MUX_2x128in_128Out
             );
 end COMPONENT; 
 
-COMPONENT MULTIPLIER 
+COMPONENT modMult
+            Generic ( width : integer ); 
             Port ( 
-            X : in  STD_LOGIC_VECTOR(127 downto 0 );
-            Y : in  STD_LOGIC_VECTOR(127 downto 0 );
-            Start : in STD_LOGIC;
-            Clk : in STD_LOGIC;
-            Z : out STD_LOGIC_VECTOR(127 downto 0 );
-            Done : out STD_LOGIC
+            A        : in  STD_LOGIC_VECTOR(width-1 downto 0 );
+            B        : in  STD_LOGIC_VECTOR(width-1 downto 0 );
+            n        : in  STD_LOGIC_VECTOR(width-1 downto 0 );
+            rst_n    : in  STD_LOGIC;
+            start    : in  STD_LOGIC;
+            clk      : in  STD_LOGIC;
+            C        : out STD_LOGIC_VECTOR(127 downto 0 );
+            finished : out STD_LOGIC
             );
 end COMPONENT;     
 
@@ -115,8 +119,6 @@ signal C_reg_input      : STD_LOGIC_VECTOR ( 127 downto 0 );
 -- Multiplier 2 calculates M*C
 
 signal Mult1_result_MtimesM         : STD_LOGIC_VECTOR ( 127 downto 0 );
-signal Mult1_inputX                 : STD_LOGIC_VECTOR ( 127 downto 0 );
-signal Mult1_inputY                 : STD_LOGIC_VECTOR ( 127 downto 0 );  
 signal Mult1_start                  : STD_LOGIC;
 signal Mult1_done                   : STD_LOGIC;
 
@@ -138,6 +140,9 @@ signal load_data                : STD_LOGIC;
 signal M_reg_input_source_sel       : STD_LOGIC; -- source select for M register. 1 = Mult 1 output, 0 = Input port
 
 
+-- system constants
+constant multiplier_width : integer := 128;
+
 
 begin
  -- data path
@@ -155,8 +160,21 @@ E_reg : PISO128to1               PORT MAP ( DataIn => E ,                       
                                             Resetn => Resetn,                   DataOut => E_LSB  );
                                             
                                             
--- multiplier one
+-- multiplier one                           
+Multiplier1 : modMult           GENERIC MAP ( multiplier_width ) 
+                                PORT MAP (  A => M_reg_output,                  B => M_reg_output,
+                                            N => N,                             rst_n => Resetn,        
+                                            Clk => Clk,                         start => Mult1_start,
+                                            finished =>  Mult1_done,            C => Mult1_result_MtimesM     
+                                            );
+                                             
 -- multiplier two
+Multiplier2 : modMult           GENERIC MAP ( multiplier_width )
+                                PORT MAP (  A => M_reg_output,                  B => C_reg_output,
+                                            N => N,                             rst_n => Resetn,
+                                            Clk => Clk,                         start => Mult2_start,
+                                            finished => Mult2_done,             C => Mult2_result_MtimesC
+                                            );
 
 -- control path
 FSM : ModExp_stateMachine       PORT MAP ( DataReady => DataInReady,            E_LSB => E_Lsb, 
