@@ -1,6 +1,6 @@
-a = 0b01100101
-b = 0b00101110
-n = 0b10101110
+a = 0x0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+b = 0x0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+n = 0x819DC6B2574E12C3C8BC49CDD79555FD
 
 print hex(a), "*", hex(b), "mod", hex(n), "=", hex(a*b%n)
 
@@ -30,3 +30,6 @@ for Bj in reversed(B):
 '''
 
 print hex(p)
+expectedValue = a*b%n
+if p == expectedValue:
+        print "Success, the output of the algorithm was correct"
