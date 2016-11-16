@@ -2,120 +2,26 @@
 # Vivado v2016.2 (64-bit)
 # SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
 # IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
-# Start of session at: Wed Nov 16 08:23:54 2016
-# Process ID: 7104
+# Start of session at: Wed Nov 16 10:44:22 2016
+# Process ID: 3448
 # Current directory: C:/Kristian/GitHub/TFE4141/project/Term_Project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1156 C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3724 C:\Kristian\GitHub\TFE4141\project\Term_Project\Term_Project.xpr
 # Log file: C:/Kristian/GitHub/TFE4141/project/Term_Project/vivado.log
 # Journal file: C:/Kristian/GitHub/TFE4141/project/Term_Project\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Kristian/GitHub/TFE4141/project/Term_Project/Term_Project.xpr
 update_compile_order -fileset sources_1
-launch_simulation
-source ModularExponentiation_tb.tcl
-close_sim
-launch_simulation
-launch_simulation
-source ModularExponentiation_tb.tcl
-restart
-run 200 ns
-run 200 ns
-restart
-run 200 ns
-restart
-run 200 ns
-run 2000 ns
-run 2000 ns
-run 2000 ns
-run 2000 ns
-restart
-run 2000 ns
-run 2000 ns
-run 2000 ns
-run 2000 ns
-relaunch_sim
-restart
-restart
-relaunch_sim
-restart
-run 2000 ns
-run 2000 ns
-run 2000 ns
-restart
-run 6000 ns
-restart
-run 6000 ns
-restart
-run 6000 ns
-restart
-run 6000 ns
-close_sim
-launch_simulation
-source ModularExponentiation_tb.tcl
-restart
-run 12000 ns
-close_sim
-launch_simulation
-source ModularExponentiation_tb.tcl
-relaunch_sim
-restart
-run 12000 ns
-restart
-run 12000 ns
-relaunch_sim
-restart
-run 12000 ns
-restart
-run 12000 ns
-restart
-run 600 us
-restart
-run 800 us
-restart
-relaunch_sim
-run 800 us
-restart
-run 800 us
+remove_files {{C:/Kristian/GitHub/TFE4141/project/Term_Project/VHDL sources/multMod.vhd}}
+remove_files -fileset sim_1 C:/Kristian/GitHub/TFE4141/project/Term_Project/testbenches/multMod_tb.vhd
 update_compile_order -fileset sources_1
 update_compile_order -fileset sources_1
-set_property top Sipo_tb [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-update_compile_order -fileset sim_1
-launch_simulation
-launch_simulation
-source Sipo_tb.tcl
-restart
-run 800 us
-close_sim
-launch_simulation
-source Sipo_tb.tcl
-restart
-run 100 ns
-restart
-run 1000 ns
-relaunch_sim
-restart
-run 250 ns
-run all
-restart
-run 250 ns
-run 250 ns
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-set_property top RSACoreTestBench [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-update_compile_order -fileset sim_1
 launch_simulation
 source RSACoreTestBench.tcl
 restart
 run 250 ns
 run 250 ns
 run 250 ns
-run 250 ns
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
-relaunch_sim
+run 6000 ns
+run 6000 ns
+run 6000 us

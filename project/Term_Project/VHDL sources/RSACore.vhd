@@ -76,15 +76,30 @@ COMPONENT Sipo
             );
 end COMPONENT;
         
-COMPONENT EdgeCounter generic ( countWidth : integer := 8);
+COMPONENT EdgeCounter 
+            generic ( 
+            countWidth      : integer := 8
+            );
             Port (   
-            Enable : in STD_LOGIC;
-            Clk : in STD_LOGIC;
-            Resetn : in STD_LOGIC;
-            CountVal : out STD_LOGIC_VECTOR (3 downto 0)
+            Enable          : in STD_LOGIC;
+            Clk             : in STD_LOGIC;
+            Resetn          : in STD_LOGIC;
+            CountVal        : out STD_LOGIC_VECTOR (3 downto 0)
             );
 end COMPONENT;
 
+COMPONENT ModularExponentiation
+            Port ( 
+            M           : in  STD_LOGIC_VECTOR (127 downto 0);
+            E           : in  STD_LOGIC_VECTOR (127 downto 0);
+            N           : in  STD_LOGIC_VECTOR (127 downto 0);
+            DataInReady : in  STD_LOGIC;
+            Clk         : in  STD_LOGIC;
+            Resetn      : in  STD_LOGIC;
+            ExpDone     : out STD_LOGIC;
+            C           : out STD_LOGIC_VECTOR (127 downto 0)
+            );
+end COMPONENT;
 
 signal M_data               : STD_LOGIC_VECTOR ( 127 downto 0 );
 signal N_parameter          : STD_LOGIC_VECTOR ( 127 downto 0 );
@@ -94,9 +109,10 @@ signal N_register_chainOut  : STD_LOGIC_VECTOR (  31 downto 0 );
 signal EnableDataReg        : STD_LOGIC;
 signal EnableCTRLReg        : STD_LOGIC;
 signal ClkCounterIn         : STD_LOGIC_VECTOR(3 downto 0);
-signal ExpDone              : STD_LOGIC := '0';
+signal ExpDone              : STD_LOGIC;
 signal dataShiftedOut       : STD_LOGIC := '0';
 signal CounterEnable        : STD_LOGIC;
+signal dataReceived         : STD_LOGIC;
 
 begin
 
@@ -105,7 +121,7 @@ FSM : TopLevelStateMachine PORT MAP (   InitRsa => InitRsa,             StartRsa
                                         Resetn => Resetn,               CoreFinishedn => CoreFinished,
                                         ExpDone => ExpDone,             dataShiftedOut => dataShiftedOut,
                                         EnableDataReg => EnableDataReg, EnableCTRLReg => EnableCtrlReg,
-                                        CounterEnable => CounterEnable  );
+                                        CounterEnable => CounterEnable, DataReceived => dataReceived  );
     
 M_data_register : Sipo     PORT MAP (  DataIn => DataIn,               CLK => Clk,
                                         Enable => enableDataReg,        Resetn => Resetn,
@@ -122,7 +138,13 @@ E_parameter_register : Sipo PORT MAP (  DataIn => N_register_chainOut,  CLK => C
 DataInCounter : EdgeCounter GENERIC MAP ( countWidth => 4 )  
                             PORT MAP (  Enable => CounterEnable,        Clk => Clk,
                                         Resetn => Resetn,               CountVal => ClkCounterIn );
-                                               
+ 
+ ModularExp  :  ModularExponentiation
+                            PORT MAP (  M => M_data,                     E => E_parameter,
+                                        N => N_parameter,               DataInReady => dataReceived,
+                                        Clk => Clk,                     Resetn => Resetn,
+                                        ExpDone => ExpDone);
+                                                                              
     
     
 end Behavioral;
