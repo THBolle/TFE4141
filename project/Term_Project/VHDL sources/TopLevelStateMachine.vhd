@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -37,7 +37,6 @@ entity TopLevelStateMachine is
     Port ( InitRsa : in STD_LOGIC;
            StartRsa : in STD_LOGIC;
            Clk : in STD_LOGIC;
-           ClkCounterIn : in STD_LOGIC_VECTOR ( 3 downto 0);
            Resetn : in STD_LOGIC;
            ExpDone: in STD_LOGIC;
            dataShiftedOut : in STD_LOGIC;
@@ -45,8 +44,7 @@ entity TopLevelStateMachine is
            DataReceived : out STD_LOGIC;
            EnableDataReg : out STD_LOGIC;
            EnableCtrlReg : out STD_LOGIC;
-           CoreFinishedn : out STD_LOGIC;
-           CounterEnable : out STD_LOGIC);
+           CoreFinishedn : out STD_LOGIC);
 end TopLevelStateMachine;
 
 
@@ -57,20 +55,22 @@ architecture Behavioral of TopLevelStateMachine is
     
     signal state : FSM_STATES;
 
-
+    signal dataCounter : unsigned ( 3 downto 0 );
 
 begin
 
 
-    reset : process ( InitRsa, StartRsa, Clk, ClkCounterIn,Resetn ) begin
+    reset : process ( InitRsa, StartRsa, Clk, Resetn ) begin
     
         if ( Resetn = '0' ) then 
             state <= IDLE;
+            dataCounter <= to_unsigned(0,4);
         elsif rising_edge(Clk) then
          
             case state is
             
                 when IDLE => 
+                        dataCounter <= to_unsigned(0,4);
                         if InitRsa = '1' then
                             state <= RECEIVING_INIT;
                         elsif ( StartRsa = '1') then
@@ -78,12 +78,14 @@ begin
                         end if;  
                 
                 when RECEIVING_INIT =>
-                        if (ClkCounterIn = x"7") then
+                        dataCounter <= dataCounter + 1;
+                        if (dataCounter = x"6") then
                             state <= IDLE;
                         end if;
                          
                 when RECEIVING_DATA =>
-                        if ( ClkCounterIn = x"3") then
+                        dataCounter <= dataCounter + 1;
+                        if ( dataCounter = x"2") then
                             state <= PROCESSING;
                         end if;
                         
@@ -117,8 +119,5 @@ begin
     CoreFinishedn <= '1' when ( State = IDLE OR State = DONE OR InitRsa = '1' OR StartRsa = '1')
                 else '0';
                 
-    CounterEnable <= '1' when ( State = RECEIVING_DATA OR State = RECEIVING_INIT OR StartRsa = '1' OR InitRsa = '1')
-                else '0';
-    
     
 end Behavioral;
