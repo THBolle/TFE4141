@@ -56,14 +56,14 @@ begin
                 nextParOutput ( 127 downto 0 ) <= std_logic_vector(to_unsigned(0,128));
  
             elsif ( rising_edge(CLK) AND Enable = '1' ) then
-                    nextParOutput(127 downto 32)    <= nextParOutput(95 downto 0);
-                    nextParOutput(31 downto 0 )     <= DataIn(31 downto 0);
+                    nextParOutput(95 downto 0)    <= nextParOutput(127 downto 32);
+                    nextParOutput(127 downto 96 )     <= DataIn(31 downto 0);
             end if;
     
         end process;
         
         -- set output with combinatorial logic to avoid extra registers:
         ParallelOut(127 downto 0) <= nextParOutput(127 downto 0 );
-        DaisyChainOut ( 31 downto 0 )  <= nextParOutput ( 127 downto 96 );
+        DaisyChainOut ( 31 downto 0 )  <= nextParOutput ( 31 downto 0 );
 
 end Behavioral;

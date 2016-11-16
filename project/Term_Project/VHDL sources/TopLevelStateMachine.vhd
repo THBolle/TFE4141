@@ -78,7 +78,7 @@ begin
                         end if;  
                 
                 when RECEIVING_INIT =>
-                        if (ClkCounterIn = x"3") then
+                        if (ClkCounterIn = x"7") then
                             state <= IDLE;
                         end if;
                          

@@ -71,7 +71,8 @@ COMPONENT Sipo
             CLK                 : in STD_LOGIC;
             Enable              : in STD_LOGIC;
             Resetn              : in STD_LOGIC;
-            ParallelOut         : out STD_LOGIC_VECTOR (127 downto 0)
+            ParallelOut         : out STD_LOGIC_VECTOR (127 downto 0);
+            DaisyChainOut : out STD_LOGIC_VECTOR ( 31 downto 0 )         
             );
 end COMPONENT;
         
@@ -85,9 +86,10 @@ COMPONENT EdgeCounter generic ( countWidth : integer := 8);
 end COMPONENT;
 
 
-signal DataRegisterContent  : STD_LOGIC_VECTOR(127 downto 0 );
-signal CTRLRegisterContent  : STD_LOGIC_VECTOR(127 downto 0 ); 
-
+signal M_data               : STD_LOGIC_VECTOR ( 127 downto 0 );
+signal N_parameter          : STD_LOGIC_VECTOR ( 127 downto 0 );
+signal E_parameter          : STD_LOGIC_VECTOR ( 127 downto 0 ); 
+signal N_register_chainOut  : STD_LOGIC_VECTOR (  31 downto 0 );
 
 signal EnableDataReg        : STD_LOGIC;
 signal EnableCTRLReg        : STD_LOGIC;
@@ -107,11 +109,15 @@ FSM : TopLevelStateMachine PORT MAP (   InitRsa => InitRsa,             StartRsa
     
 M_data_register : Sipo     PORT MAP (  DataIn => DataIn,               CLK => Clk,
                                         Enable => enableDataReg,        Resetn => Resetn,
-                                        ParallelOut => DataRegisterContent );
+                                        ParallelOut => M_data );
                                         
-CTRLRegister : Sipo         PORT MAP (  DataIn => DataIn,               CLK => Clk,
+N_parameter_register : Sipo      PORT MAP (  DataIn => DataIn,          CLK => Clk,
                                         Enable => enableCTRLReg,        Resetn => Resetn,
-                                        ParallelOut => CTRLRegisterContent );
+                                        ParallelOut => N_parameter,     DaisyChainOut => N_register_chainOut );
+                                        
+E_parameter_register : Sipo PORT MAP (  DataIn => N_register_chainOut,  CLK => Clk,
+                                        Enable => enableCTRLREG,        Resetn => Resetn,
+                                        ParallelOut => E_parameter );                                         
                                        
 DataInCounter : EdgeCounter GENERIC MAP ( countWidth => 4 )  
                             PORT MAP (  Enable => CounterEnable,        Clk => Clk,
