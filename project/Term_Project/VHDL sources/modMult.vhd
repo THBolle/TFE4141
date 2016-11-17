@@ -15,7 +15,7 @@ architecture Behavioral of modMult is
         Generic ( width                         :     natural );
         Port    ( clk, rst_n, start             : in  STD_LOGIC;
                   reset_C, MSAL_run, finished   : out STD_LOGIC;
-                  B_index                       : out natural range 0 to width-1 );
+                  B_index                       : out natural );
     end component modMultFSM;
     
     component modMultMSA is
