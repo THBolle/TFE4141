@@ -5,50 +5,38 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity modMultMSA is
-    Generic ( width : integer );
-    Port ( A : in STD_LOGIC_VECTOR (width-1 downto 0);
-           B : in STD_LOGIC_VECTOR (width-1 downto 0);
-           n : in STD_LOGIC_VECTOR (width-1 downto 0);
-           clk : in STD_LOGIC;
-           rst : in STD_LOGIC;
-           C : out STD_LOGIC_VECTOR (width-1 downto 0);
-           MSA_done : out STD_LOGIC);
+    Generic ( width : positive := 128 );
+    Port ( A, B, n : in STD_LOGIC_VECTOR (width-1 downto 0);
+           clk, rst_n, reset_C, MSAL_run : in STD_LOGIC;
+           B_index : in natural;
+           C : out STD_LOGIC_VECTOR (width-1 downto 0) );
 end modMultMSA;
 
 architecture Behavioral of modMultMSA is
-    signal cnt : integer range -1 to width;
     signal P : STD_LOGIC_VECTOR (width+1 downto 0);
+    signal P_sa : STD_LOGIC_VECTOR (width+1 downto 0);
+    signal P_sub_n : STD_LOGIC_VECTOR (width+1 downto 0);
+    signal P_sub_2n : STD_LOGIC_VECTOR (width+1 downto 0);
 begin
     
-    process (rst, clk)
-        variable P_sa : STD_LOGIC_VECTOR (width+1 downto 0);
-        variable P_mod1 : STD_LOGIC_VECTOR (width+1 downto 0);
-        variable P_mod2 : STD_LOGIC_VECTOR (width+1 downto 0);
+    P_sa <= P(width downto 0) & '0' + (A and (A'range => B(B_index)));
+    P_sub_n <= P_sa - n;
+    P_sub_2n <= P_sub_n - n;
+    
+    process (rst_n, reset_C, clk)
     begin
-        if rst = '1' then
-            MSA_done <= '0';
-            cnt <= width - 1;
+        if rst_n = '0' or reset_C = '1' then
             P <= (others => '0');
-        elsif cnt = -1 then null;
         elsif rising_edge(clk) then
-            P_sa := P(width downto 0) & '0' + (A and (A'range => B(cnt)));
-            if P_sa > n then
-                P_mod1 := P_sa - n;
-            else
-                P_mod1 := P_sa;
+            if MSAL_run = '1' then
+                if P_sa < n then
+                    P <= P_sa;
+                elsif P_sub_n < n then
+                    P <= P_sub_n;
+                else
+                    P <= P_sub_2n;
+                end if;
             end if;
-            if P_mod1 > n then
-                P_mod2 := P_mod1 - n;
-            else
-                P_mod2 := P_mod1;
-            end if;
-            cnt <= cnt - 1;
-            P <= P_mod2; 
-        end if;
-        if cnt = - 1 then
-            MSA_done <= '1';
-        else
-            MSA_done <= '0';
         end if;
     end process;
     

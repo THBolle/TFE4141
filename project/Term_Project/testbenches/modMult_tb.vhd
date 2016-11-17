@@ -45,7 +45,7 @@ begin
     
     ASSERTION: process begin
         wait until finished = '1';
-        assert(C = x"34c10b0a2b6e7fbf76bfbe47bed76a54");
+        assert(C = x"7f021b0c74da40bc00a73216d0fe35b2");
     end process;
     
 end testbench;

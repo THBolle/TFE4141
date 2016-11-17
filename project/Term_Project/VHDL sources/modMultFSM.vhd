@@ -1,41 +1,44 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+--use IEEE.NUMERIC_STD.ALL;
 
 entity modMultFSM is
-    Generic ( width : integer );
-    Port ( clk : in STD_LOGIC;
-           rst_n : in STD_LOGIC;
-           start : in STD_LOGIC;
-           MSA_done : in STD_LOGIC;
-           rst_MSA : out STD_LOGIC;
-           finished : out STD_LOGIC);
+    Generic ( width : natural := 128 );
+    Port ( clk, rst_n, start : in STD_LOGIC;
+           reset_C, MSAL_run, finished : out STD_LOGIC;
+           B_index : out natural range 0 to width-1 );
 end modMultFSM;
 
 architecture Behavioral of modMultFSM is
-    type FSM_state is (IDLE, INIT, MSA, DONE);
+    type FSM_state is (IDLE, C_RST, LOOPING, C_RDY);
     signal state : FSM_state;
+    attribute fsm_encoding : string;
+    attribute fsm_encoding of state : signal is "gray";
+    signal B_index_reg : natural range 0 to width-1;
 begin
-    stateSeqv: process(rst_n, clk) begin
+    stateSeqv: process(rst_n, clk)
+    begin
         if rst_n = '0' then
             state <= IDLE;
+            B_index_reg <= 0;
         elsif rising_edge(clk) then
             case state is
             when IDLE =>
                 if start = '1' then
-                    state <= INIT;
-                else
-                    state <= IDLE;
+                    B_index_reg <= width-1;
+                    state <= C_RST;
                 end if;
-            when INIT => state <= MSA;
-            when MSA =>
-                if MSA_done = '1' then
-                    state <= DONE;
+            when C_RST =>
+                state <= LOOPING;
+            when LOOPING =>
+                if B_index_reg > 0 then
+                    B_index_reg <= B_index_reg - 1;
                 else
-                    state <= MSA;
+                    state <= C_RDY;
                 end if;
-            when DONE =>
+            when C_RDY =>
                 if start = '1' then
-                    state <= INIT;
+                    state <= C_RST;
                 else
                     state <= IDLE;
                 end if;
@@ -43,7 +46,11 @@ begin
         end if;
     end process stateSeqv;
     
-    rst_MSA <= '1' when state = INIT else '0';
-    finished <= '1' when state = DONE else '0';
+    B_index <= B_index_reg;
+    
+    reset_C <= '1' when (state = C_RST) else '0';
+    MSAL_run <= '1' when (state = LOOPING) else '0';
+    finished <= '1' when (state = IDLE) else '0';
+    
 
 end Behavioral;
