@@ -7,8 +7,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity modMultMSA is
     Generic ( width : positive := 128 );
     Port ( A, B, n : in STD_LOGIC_VECTOR (width-1 downto 0);
-           clk, rst_n, reset_C, MSAL_run : in STD_LOGIC;
-           B_index : in natural;
+           clk, rst_n, reset_C, MSAL_run, B_bit : in STD_LOGIC;
            C : out STD_LOGIC_VECTOR (width-1 downto 0) );
 end modMultMSA;
 
@@ -18,10 +17,9 @@ architecture Behavioral of modMultMSA is
     signal P_sa : signed (width+2 downto 0);
     signal P_sub_n : signed (width+2 downto 0);
     signal P_sub_2n : signed (width+2 downto 0);
-    signal B_reg : std_logic_vector(width-1 downto 0);
 begin
     
-    P_sa <= signed('0' & P(width downto 0) & '0') + signed('0' & (A and (A'range => B_reg(width-1))));
+    P_sa <= signed('0' & P(width downto 0) & '0') + signed('0' & (A and (A'range => B_bit)));
     P_sub_n <= P_sa - signed('0' & n);
     P_sub_2n <= P_sa - signed('0' & n(width-1 downto 0) & '0');
     
@@ -29,7 +27,6 @@ begin
     begin
         if rst_n = '0' or reset_C = '1' then
             P <= (others => '0');
-            B_reg <= B;
         elsif rising_edge(clk) then
             if MSAL_run = '1' then
                 if P_sub_2n(width+2) = '0' then
@@ -39,7 +36,6 @@ begin
                 else
                     P <= P_sa;
                 end if;
-                B_reg <= B_reg(width-2 downto 0) & '0';
             end if;
         end if;
     end process;
