@@ -22,7 +22,7 @@ architecture Behavioral of shiftOut is
     
 begin
 
-    process (clk, startShiftOut)
+    process (clk, rst_n, startShiftOut)
     begin
         if rst_n = '0' then
             state <= IDLE;

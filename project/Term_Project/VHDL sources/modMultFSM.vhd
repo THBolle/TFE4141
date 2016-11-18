@@ -6,7 +6,7 @@ entity modMultFSM is
     Generic ( width : natural := 128 );
     Port ( clk, rst_n, start : in STD_LOGIC;
            reset_C, MSAL_run, finished : out STD_LOGIC;
-           B_index : out natural range 0 to width-1 );
+           B_index : out natural );
 end modMultFSM;
 
 architecture Behavioral of modMultFSM is

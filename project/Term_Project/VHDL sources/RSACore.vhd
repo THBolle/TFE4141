@@ -93,6 +93,7 @@ COMPONENT shiftout
             PORT (
            clk, rst_n, startShiftOut    : in  STD_LOGIC;
            M                            : in  STD_LOGIC_VECTOR (127 downto 0);
+           DataShiftComplete            : out STD_LOGIC;
            DataOut                      : out STD_LOGIC_VECTOR (31 downto 0));
 end COMPONENT;
 
