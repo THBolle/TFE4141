@@ -12,6 +12,8 @@ for i in range ( 0, 128 ):
     if ( (E >> i) & 1 ):
         C = (C * M) % N
     M = (M * M) % N
+    if (E >> i == 0):
+        break
 
     
 
