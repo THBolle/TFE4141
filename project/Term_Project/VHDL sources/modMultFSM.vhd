@@ -47,7 +47,7 @@ begin
     
     reset_C <= '1' when (state = C_RST) else '0';
     MSAL_run <= '1' when (state = LOOPING) else '0';
-    finished <= '1' when (state = IDLE) else '0';
+    finished <= '1' when (state = C_RDY) else '0';
     
 
 end Behavioral;

@@ -19,7 +19,7 @@ architecture Behavioral of modMult is
     
     component modMultMSA is
         Generic ( width : positive );
-        Port ( A, B, n : in STD_LOGIC_VECTOR (width-1 downto 0);
+        Port ( A, n : in STD_LOGIC_VECTOR (width-1 downto 0);
                    clk, rst_n, reset_C, MSAL_run, B_bit : in STD_LOGIC;
                    C : out STD_LOGIC_VECTOR (width-1 downto 0) );
     end component modMultMSA;
@@ -53,7 +53,6 @@ begin
     
     MSAL    :   modMultMSA      GENERIC MAP ( width => width )
                                 PORT MAP    ( A => A,
-                                              B => B,
                                               n => n,
                                               clk => clk,
                                               rst_n => rst_n,
