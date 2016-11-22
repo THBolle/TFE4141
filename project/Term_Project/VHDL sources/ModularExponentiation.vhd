@@ -52,7 +52,8 @@ COMPONENT PISO128to1
             Shift_load      : in STD_LOGIC;
             Clk             : in STD_LOGIC;
             Resetn          : in STD_LOGIC;
-            DataOut         : out STD_LOGIC
+            DataOut         : out STD_LOGIC;
+            RegEmpty        : out STD_LOGIC
             );
 end COMPONENT;
 
@@ -102,7 +103,8 @@ COMPONENT ModExp_stateMachine
             Load_data          : out STD_LOGIC;
             exp_done           : out STD_LOGIC;
             shift_load_E       : out STD_LOGIC;
-            M_input_source_sel : out STD_LOGIC
+            M_input_source_sel : out STD_LOGIC;
+            E_empty            : in STD_LOGIC
             );
 end COMPONENT;                                                   
 
@@ -131,7 +133,7 @@ signal Mult2_done                   : STD_LOGIC;
 signal E_LSB                        : STD_LOGIC;
 signal E_shift_load                 : STD_LOGIC; -- 1 = shift, 0 = load
 signal E_shift_load_enable          : STD_LOGIC;
-
+signal E_empty                      : STD_LOGIC;
 
 -- multicast control signals
 signal load_data                : STD_LOGIC;
@@ -161,7 +163,8 @@ C_IN_MUX : MUX_2x128in_128Out    PORT MAP ( InA => C_reg_startVal,              
                                             
 E_reg : PISO128to1               PORT MAP ( DataIn => E ,                       Enable => load_data , 
                                             Shift_load => E_shift_load,         Clk => Clk, 
-                                            Resetn => Resetn,                   DataOut => E_LSB  );
+                                            Resetn => Resetn,                   DataOut => E_LSB,
+                                            RegEmpty => E_empty  );
                                             
                                             
 -- multiplier one                           
@@ -186,8 +189,8 @@ FSM : ModExp_stateMachine       PORT MAP ( DataReady => DataInReady,            
                                                 Clk => Clk,                     Resetn => Resetn,
                                                 Start_Mpow2 => Mult1_start,     Start_MC => Mult2_start,
                                                 Load_data => load_data,         exp_done => ExpDone,
-                                                shift_load_E => E_shift_load,   M_input_source_sel => reg_input_source_sel    
-                                                );
+                                                shift_load_E => E_shift_load,   M_input_source_sel => reg_input_source_sel,    
+                                                E_empty => E_empty);
 
 
 -- -- combinatorial mapping from internal signal to output -- --

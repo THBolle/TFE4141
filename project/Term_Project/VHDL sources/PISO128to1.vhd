@@ -37,7 +37,8 @@ entity PISO128to1 is
            Shift_load : in STD_LOGIC;
            Clk : in STD_LOGIC;
            Resetn : in STD_LOGIC;
-           DataOut : out STD_LOGIC);
+           DataOut : out STD_LOGIC;
+           RegEmpty : out STD_LOGIC);
 end PISO128to1;
 
 architecture Behavioral of PISO128to1 is
@@ -66,6 +67,7 @@ end process;
 
 
 DataOut <= internalData(0);
+RegEmpty <= '1' when internalData(127 downto 0) = x"00000000000000000000000000000000" else '0';
 
 
 end Behavioral;

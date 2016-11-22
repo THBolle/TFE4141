@@ -36,6 +36,7 @@ entity ModExp_stateMachine is
            Resetn : in STD_LOGIC;
            DataReady : in STD_LOGIC;
            E_LSB : in STD_LOGIC;
+           E_empty : in STD_LOGIC;
            Start_Mpow2 : out STD_LOGIC;
            Start_MC : out STD_LOGIC;
            Done_MPow2 : in STD_LOGIC;
@@ -103,10 +104,13 @@ begin
                      end if;
                      mult_counter_limit := to_unsigned(128,8);
                     
-                    if (multipliersDone = '1' and mult_counter < mult_counter_limit) then 
+                    if (multipliersDone = '1' and E_empty = '1') then
+                        State <= DONE;
+                        mult_counter <= to_unsigned(0,8);
+                    elsif (multipliersDone = '1' and mult_counter < mult_counter_limit) then 
                         State <= STORE_AND_RELOAD;
                         mult_counter <= mult_counter + 1;
-                    elsif ( multipliersDone = '1' and mult_counter >= mult_counter) then
+                    elsif ( multipliersDone = '1' and mult_counter >= mult_counter ) then
                         State <= DONE;
                         mult_counter <= to_unsigned(0,8);
                     else 

@@ -43,7 +43,8 @@ architecture Behavioral of PISO128to1_tb is
            Shift_load : in STD_LOGIC;
            Clk : in STD_LOGIC;
            Resetn : in STD_LOGIC;
-           DataOut : out STD_LOGIC);
+           DataOut : out STD_LOGIC;
+           RegEmpty : out STD_LOGIC);
     end COMPONENT;
     
     -- constants
@@ -59,6 +60,7 @@ architecture Behavioral of PISO128to1_tb is
     
     -- outputs
     signal DataOut : STD_LOGIC;
+    signal RegEmpty : STD_LOGIC;
     
    
 
@@ -70,7 +72,8 @@ begin
                            Shift_load => Shift_load,
                            Clk => Clk,
                            Resetn => Resetn,
-                           DataOut => DataOut
+                           DataOut => DataOut,
+                           RegEmpty => RegEmpty
                        );
                        
     clk_proc : process begin
