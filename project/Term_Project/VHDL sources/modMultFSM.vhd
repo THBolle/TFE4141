@@ -1,6 +1,5 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
---use IEEE.NUMERIC_STD.ALL;
 
 entity modMultFSM is
     Generic ( width : natural := 128 );
@@ -49,5 +48,4 @@ begin
     MSAL_run <= '1' when (state = LOOPING) else '0';
     finished <= '1' when (state = C_RDY) else '0';
     
-
 end Behavioral;
