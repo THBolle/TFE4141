@@ -1,35 +1,5 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 19.09.2016 18:12:25
--- Design Name: 
--- Module Name: RSACore - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 
 entity RSACore is
@@ -111,37 +81,47 @@ signal dataReceived         : STD_LOGIC;
 
 begin
 
-FSM : TopLevelStateMachine      PORT MAP (   
-                                            InitRsa => InitRsa,             StartRsa => StartRsa, 
-                                            Clk => Clk,                     
-                                            Resetn => Resetn,               CoreFinishedn => CoreFinished,
-                                            ExpDone => ExpDone,             dataShiftedOut => dataShiftedOut,
-                                            EnableDataReg => EnableDataReg, EnableCTRLReg => EnableCtrlReg,
-                                            DataReceived => dataReceived  );
-    
-M_data_register : Sipo          PORT MAP (  DataIn => DataIn,               CLK => Clk,
-                                            Enable => enableDataReg,        Resetn => Resetn,
-                                            ParallelOut => M_data );
-                                        
-N_parameter_register : Sipo     PORT MAP (  DataIn => DataIn,          CLK => Clk,
-                                            Enable => enableCTRLReg,        Resetn => Resetn,
-                                            ParallelOut => N_parameter,     DaisyChainOut => N_register_chainOut );
-                                        
-E_parameter_register : Sipo     PORT MAP (  DataIn => N_register_chainOut,  CLK => Clk,
-                                            Enable => enableCTRLREG,        Resetn => Resetn,
-                                            ParallelOut => E_parameter );                                         
-                                       
+FSM : TopLevelStateMachine      
+                PORT MAP (   
+                InitRsa => InitRsa,             StartRsa => StartRsa, 
+                Clk => Clk,                     
+                Resetn => Resetn,               CoreFinishedn => CoreFinished,
+                ExpDone => ExpDone,             dataShiftedOut => dataShiftedOut,
+                EnableDataReg => EnableDataReg, EnableCTRLReg => EnableCtrlReg,
+                DataReceived => dataReceived  );
+
+M_data_register : Sipo          
+                PORT MAP (  
+                DataIn => DataIn,               CLK => Clk,
+                Enable => enableDataReg,        Resetn => Resetn,
+                ParallelOut => M_data );
+            
+N_parameter_register : Sipo     
+                PORT MAP (  
+                DataIn => DataIn,          CLK => Clk,
+                Enable => enableCTRLReg,        Resetn => Resetn,
+                ParallelOut => N_parameter,     DaisyChainOut => N_register_chainOut );
+            
+E_parameter_register : Sipo     
+                PORT MAP (  
+                DataIn => N_register_chainOut,  CLK => Clk,
+                Enable => enableCTRLREG,        Resetn => Resetn,
+                ParallelOut => E_parameter );                                         
+           
  
 ModularExp  :  ModularExponentiation
-                                PORT MAP (  M => M_data,                     E => E_parameter,
-                                            N => N_parameter,               DataInReady => dataReceived,
-                                            Clk => Clk,                     Resetn => Resetn,
-                                            ExpDone => ExpDone,             C => ModExp_Result );
-                                                                              
-outputShifter : shiftout        PORT MAP (  Clk => Clk,                     Rst_n => Resetn,
-                                            StartShiftOut => ExpDone,       M => ModExp_Result,
-                                            DataOut =>  DataOut );
-    
+                PORT MAP (  
+                M => M_data,                     E => E_parameter,
+                N => N_parameter,               DataInReady => dataReceived,
+                Clk => Clk,                     Resetn => Resetn,
+                ExpDone => ExpDone,             C => ModExp_Result );
+                                                                  
+outputShifter : shiftout        
+                PORT MAP (  
+                Clk => Clk,                     Rst_n => Resetn,
+                StartShiftOut => ExpDone,       M => ModExp_Result,
+                DataOut =>  DataOut );
+
     
  
     
