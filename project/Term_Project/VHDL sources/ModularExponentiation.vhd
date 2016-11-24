@@ -1,35 +1,10 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 11/08/2016 02:33:20 PM
--- Design Name: 
--- Module Name: ModularExponentiation - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
 
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity ModularExponentiation is
     Port ( M : in STD_LOGIC_VECTOR (127 downto 0);
@@ -109,13 +84,23 @@ COMPONENT ModExp_stateMachine
 end COMPONENT;                                                   
 
 
--- --  register signals -- -- 
+-- --  register signals -- --
+ 
 signal M_reg_output     : STD_LOGIC_VECTOR ( 127 downto 0 );
 signal M_reg_input      : STD_LOGIC_VECTOR ( 127 downto 0 );
 
 signal C_reg_output     : STD_LOGIC_VECTOR ( 127 downto 0 );
 signal C_reg_input      : STD_LOGIC_VECTOR ( 127 downto 0 );
-constant C_reg_startVal : STD_LOGIC_VECTOR ( 127 downto 0 ) := x"00000000000000000000000000000001";
+
+
+
+-- -- Constants -- -- 
+
+-- Note: C_reg_startValue declaration is wrapped 
+-- due to page width restrictions
+constant C_reg_startVal : STD_LOGIC_VECTOR ( 127 downto 0 ) 
+                        := x"00000000000000000000000000000001";
+
 
 -- -- multiplier signals -- -- 
 -- Multiplier 1 calculates M^2
@@ -140,8 +125,10 @@ signal load_data                : STD_LOGIC;
 
 
 -- -- mux signals -- -- 
-signal reg_input_source_sel       : STD_LOGIC;  -- source select for M register. 1 = Mult 1 output, 0 = Input port
-                                                -- source select for C register. 1 = Mult 2 output, 0 = Default value; 
+-- source select for M register. 1 = Mult 1 output, 0 = Input port
+-- source select for C register. 1 = Mult 2 output, 0 = Default value; 
+signal reg_input_source_sel       : STD_LOGIC;  
+
 
 -- system constants
 constant multiplier_width : integer := 128;
@@ -149,55 +136,66 @@ constant multiplier_width : integer := 128;
 
 begin
  -- data path
-M_reg : dataRegister             PORT MAP ( DataIn => M_reg_input ,             Load_enable => load_data, 
-                                            Clk=> Clk,  Resetn => Resetn ,      DataOut => M_reg_output);
+M_reg : dataRegister            
+                PORT MAP ( 
+                DataIn => M_reg_input ,             Load_enable => load_data, 
+                Clk=> Clk,  Resetn => Resetn ,      DataOut => M_reg_output);
+                                                            
+C_reg : dataRegister            
+                PORT MAP ( 
+                DataIn =>  C_reg_input,             Load_enable => load_data, 
+                Clk => Clk,   Resetn => Resetn,     DataOut => C_reg_output   );
+                            
+M_IN_MUX : MUX_2x128in_128Out    
+                PORT MAP ( 
+                InA => M ,                          Inb => Mult1_result_MtimesM , 
+                Sel => reg_input_source_sel,        OutA => M_reg_input );
+                
+C_IN_MUX : MUX_2x128in_128Out    
+                PORT MAP ( 
+                InA => C_reg_startVal,              Inb => Mult2_result_MtimesC,
+                Sel => reg_input_source_sel,        OutA => C_reg_input);
                                             
-C_reg : dataRegister             PORT MAP ( DataIn =>  C_reg_input,             Load_enable => load_data, 
-                                            Clk => Clk,   Resetn => Resetn,     DataOut => C_reg_output   );
-                                            
-M_IN_MUX : MUX_2x128in_128Out    PORT MAP ( InA => M ,                          Inb => Mult1_result_MtimesM , 
-                                            Sel => reg_input_source_sel,        OutA => M_reg_input );
-                                            
-C_IN_MUX : MUX_2x128in_128Out    PORT MAP ( InA => C_reg_startVal,              Inb => Mult2_result_MtimesC,
-                                            Sel => reg_input_source_sel,        OutA => C_reg_input);
-                                            
-E_reg : PISO128to1               PORT MAP ( DataIn => E ,                       Enable => load_data , 
-                                            Shift_load => E_shift_load,         Clk => Clk, 
-                                            Resetn => Resetn,                   DataOut => E_LSB,
-                                            RegEmpty => E_empty  );
-                                            
+E_reg : PISO128to1               
+                PORT MAP ( 
+                DataIn => E ,                       Enable => load_data , 
+                Shift_load => E_shift_load,         Clk => Clk, 
+                Resetn => Resetn,                   DataOut => E_LSB,
+                RegEmpty => E_empty  );
+                
                                             
 -- multiplier one                           
-Multiplier1 : modMult           GENERIC MAP ( multiplier_width ) 
-                                PORT MAP (  A => M_reg_output,                  B => M_reg_output,
-                                            N => N,                             rst_n => Resetn,        
-                                            Clk => Clk,                         start => Mult1_start,
-                                            finished =>  Mult1_done,            C => Mult1_result_MtimesM     
-                                            );
-                                             
+Multiplier1 : modMult           
+                GENERIC MAP ( multiplier_width ) 
+                PORT MAP (  
+                A => M_reg_output,                  B => M_reg_output,
+                N => N,                             rst_n => Resetn,        
+                Clk => Clk,                         start => Mult1_start,
+                finished =>  Mult1_done,            C => Mult1_result_MtimesM);
+                 
 -- multiplier two
-Multiplier2 : modMult           GENERIC MAP ( multiplier_width )
-                                PORT MAP (  A => M_reg_output,                  B => C_reg_output,
-                                            N => N,                             rst_n => Resetn,
-                                            Clk => Clk,                         start => Mult2_start,
-                                            finished => Mult2_done,             C => Mult2_result_MtimesC
-                                            );
+Multiplier2 : modMult           
+                GENERIC MAP ( multiplier_width )
+                PORT MAP (  
+                A => M_reg_output,                  B => C_reg_output,
+                N => N,                             rst_n => Resetn,
+                Clk => Clk,                         start => Mult2_start,
+                finished => Mult2_done,             C => Mult2_result_MtimesC );
 
 -- control path
-FSM : ModExp_stateMachine       PORT MAP ( DataReady => DataInReady,            E_LSB => E_Lsb, 
-                                                Done_MPow2 => Mult1_done,       Done_MC => Mult2_done,
-                                                Clk => Clk,                     Resetn => Resetn,
-                                                Start_Mpow2 => Mult1_start,     Start_MC => Mult2_start,
-                                                Load_data => load_data,         exp_done => ExpDone,
-                                                shift_load_E => E_shift_load,   M_input_source_sel => reg_input_source_sel,    
-                                                E_empty => E_empty);
+FSM : ModExp_stateMachine       
+                PORT MAP ( 
+                DataReady => DataInReady,           E_LSB => E_Lsb, 
+                Done_MPow2 => Mult1_done,           Done_MC => Mult2_done,
+                Clk => Clk,                         Resetn => Resetn,
+                Start_Mpow2 => Mult1_start,         Start_MC => Mult2_start,
+                Load_data => load_data,             exp_done => ExpDone,
+                shift_load_E => E_shift_load,       E_empty => E_empty,
+                M_input_source_sel => reg_input_source_sel    
+               );
 
 
 -- -- combinatorial mapping from internal signal to output -- --
 C (127 downto 0 ) <= C_reg_output ( 127 downto 0 );
                                               
-
-
-
-
 end Behavioral;
