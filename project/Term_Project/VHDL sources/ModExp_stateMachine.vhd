@@ -1,35 +1,7 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 11/09/2016 08:38:20 AM
--- Design Name: 
--- Module Name: ModExp_stateMachine - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity ModExp_stateMachine is
     Port ( Clk : in STD_LOGIC;
@@ -52,7 +24,13 @@ end ModExp_stateMachine;
 
 architecture Behavioral of ModExp_stateMachine is
 
-    TYPE FSM_STATES is ( IDLE, LOAD_DATA_FROM_INPUT, STORE_AND_RELOAD ,START_MULT, WAIT_MULT, DONE );
+    TYPE FSM_STATES is ( 
+                        IDLE, 
+                        LOAD_DATA_FROM_INPUT, 
+                        STORE_AND_RELOAD,
+                        START_MULT, 
+                        WAIT_MULT, DONE 
+                       );
     signal state : FSM_STATES; 
     
     signal mult_counter : UNSIGNED ( 7 downto 0 );
@@ -71,9 +49,7 @@ begin
     variable mult_counter_limit : UNSIGNED ( 7 downto 0);
     
     begin 
-    
-       
-    
+
         if (Resetn = '0') then
             state <= IDLE;
             mult_counter <= to_unsigned(0,8);
