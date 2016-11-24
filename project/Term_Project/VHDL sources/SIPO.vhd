@@ -1,35 +1,9 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 11/05/2016 02:40:53 PM
--- Design Name: 
--- Module Name: negEdgeSIPO - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity SIPO is
     Port ( DataIn : in STD_LOGIC_VECTOR (31 downto 0);
@@ -37,9 +11,11 @@ entity SIPO is
            Enable : in STD_LOGIC;
            Resetn : in STD_LOGIC;
            ParallelOut : out STD_LOGIC_VECTOR (127 downto 0);
-           DaisyChainOut : out STD_LOGIC_VECTOR ( 31 downto 0 ) -- for daisy chain config of registers
+           DaisyChainOut : out STD_LOGIC_VECTOR ( 31 downto 0 ) 
           );
 end SIPO;
+
+-- Daisychain out is 4 clk signals delayed version of DataIn
 
 architecture Behavioral of SIPO is
     
