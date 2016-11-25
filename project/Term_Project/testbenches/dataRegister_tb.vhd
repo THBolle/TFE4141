@@ -32,7 +32,12 @@ signal DataOut      : STD_LOGIC_VECTOR ( 127 downto 0 );
 
 begin
 
-UUT : dataRegister PORT MAP ( DataIn => DataIn, Load_enable => Load_enable, DataOut => DataOut, Clk => Clk, Resetn => Resetn);
+UUT : dataRegister  PORT MAP ( 
+                    DataIn => DataIn, 
+                    Load_enable => Load_enable, 
+                    DataOut => DataOut, 
+                    Clk => Clk, 
+                    Resetn => Resetn );
 
 clkProc : process begin
     clk <= '0';
