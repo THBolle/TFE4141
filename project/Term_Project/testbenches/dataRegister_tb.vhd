@@ -21,7 +21,9 @@ constant clk_period : time := 20ns;
 
 
 --data in
-signal DataIn       : STD_LOGIC_VECTOR ( 127 downto 0 ) := x"00000000000000000000000000000000";
+signal DataIn       : STD_LOGIC_VECTOR ( 127 downto 0 ) 
+                    := x"00000000000000000000000000000000";
+                    
 signal Load_enable  : STD_LOGIC := '0';
 signal Clk          : STD_LOGIC := '0';
 signal Resetn       : STD_LOGIC := '0';
