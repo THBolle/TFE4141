@@ -8,7 +8,8 @@ end modMult_tb;
 architecture testbench of modMult_tb is
     component modMult is
         Generic ( width : integer );
-        Port ( A, B, n : in STD_LOGIC_VECTOR (width-1 downto 0) := x"00000000000000000000000000000000";
+        Port ( A, B, n  : in STD_LOGIC_VECTOR (width-1 downto 0) 
+                        := x"00000000000000000000000000000000";
                rst_n, clk, start : in STD_LOGIC := '0';
                finished : out STD_LOGIC;
                C : out STD_LOGIC_VECTOR (width-1 downto 0));          
@@ -17,10 +18,16 @@ architecture testbench of modMult_tb is
     constant width              : integer                               := 128;
     signal clk, rst_n, start    : STD_LOGIC                             := '0';
     signal finished             : STD_LOGIC;
-    signal A                    : STD_LOGIC_VECTOR (width-1 downto 0)   := x"00000000000000000000000000000000";
-    signal B                    : STD_LOGIC_VECTOR (width-1 downto 0)   := x"00000000000000000000000000000000";
-    signal N                    : STD_LOGIC_VECTOR (width-1 downto 0)   := x"B19DC6B2574E12C3C8BC49CDD79555FD";
-    signal C                    : STD_LOGIC_VECTOR (width-1 downto 0);  --   
+    signal A                    : STD_LOGIC_VECTOR (width-1 downto 0)   
+                                := x"00000000000000000000000000000000";
+    
+    signal B                    : STD_LOGIC_VECTOR (width-1 downto 0)   
+                                := x"00000000000000000000000000000000";
+    
+    signal N                    : STD_LOGIC_VECTOR (width-1 downto 0)   
+                                := x"B19DC6B2574E12C3C8BC49CDD79555FD";
+    
+    signal C                    : STD_LOGIC_VECTOR (width-1 downto 0);     
     constant clk_period : time := 20 ns;
     
     signal C_expected : STD_LOGIC_VECTOR (width-1 downto 0);
