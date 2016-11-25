@@ -13,7 +13,7 @@ architecture Behavioral of Sipo_tb is
                                     Enable : in STD_LOGIC;
                                     Resetn : in STD_LOGIC;
                                     ParallelOut : out STD_LOGIC_VECTOR (127 downto 0);
-                                    DaisyChainOut : out STD_LOGIC_VECTOR ( 31 downto 0 ) -- for daisy chain config of registers
+                                    DaisyChainOut : out STD_LOGIC_VECTOR ( 31 downto 0 ) 
                                 );
     end COMPONENT;
 
@@ -32,7 +32,13 @@ architecture Behavioral of Sipo_tb is
     signal ChainOut : std_logic_vector(31 downto 0);
 
 begin
-    UUT: Sipo PORT MAP ( DataIn=> DataIn, CLK => CLK, Enable =>Enable, Resetn=>Resetn,ParallelOut =>ParallelOut,DaisyChainOut => ChainOut);
+    UUT: Sipo   PORT MAP ( 
+                DataIn=> DataIn, 
+                CLK => CLK, 
+                Enable =>Enable, 
+                Resetn=>Resetn,
+                ParallelOut =>ParallelOut,
+                DaisyChainOut => ChainOut);
     
     clk_process : process begin
         CLK <= '0';
